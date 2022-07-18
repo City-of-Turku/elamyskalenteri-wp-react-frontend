@@ -1,10 +1,10 @@
-import IndexPage from "../pageComponents/Index";
-import Layout from "../components/Layout/Layout";
+import IndexPage from "../../pageComponents/Index";
+import Layout from "../../components/Layout/Layout";
 
 const Home = ({ elements }) => {
   return (
     <Layout>
-      <IndexPage locale={"fi"} elements={elements} />
+      <IndexPage locale={"sv"} elements={elements} />
     </Layout>
   )
 }

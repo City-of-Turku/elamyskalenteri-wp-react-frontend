@@ -1,9 +1,9 @@
+import Navbar from "../Navbar/Navbar";
+
 const Layout = ({ children, locale }) => {
   return (
     <>
-      <div style={{ height: 250, backgroundColor: "#F26835", padding: 24}}>
-        VINK
-      </div>
+      <Navbar />
       <main>
         {children}
       </main>

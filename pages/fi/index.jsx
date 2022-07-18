@@ -1,5 +1,5 @@
-import IndexPage from "../pageComponents/Index";
-import Layout from "../components/Layout/Layout";
+import IndexPage from "../../pageComponents/Index";
+import Layout from "../../components/Layout/Layout";
 
 const Home = ({ elements }) => {
   return (
