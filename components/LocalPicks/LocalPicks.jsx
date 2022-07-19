@@ -1,8 +1,8 @@
-const LocalPicks = ({ props }) => {
+const LocalPicks = ({ props, locale }) => {
   console.log("props: ", props)
   return (
     <>
-      <h2 style={{ textAlign: "center" }}>{props.header}</h2>
+      <h2 style={{ textAlign: "center" }}>{props.header[locale]}</h2>
       <div style={{ display: "flex", justifyContent: "center", gap: 24, flexDirection: "row" }}>
         {props.column.map((col, index) => (
           <div key={index} style={{ width: 456, textAlign: "center"}}>
