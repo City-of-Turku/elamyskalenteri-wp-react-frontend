@@ -1,34 +1,4 @@
-import Link from "next/link";
 
-// const Navbar = () => {
-//   return (
-//       <div>
-//       <Container maxWidth="xl">
-//         <MenuIcon />
-//         <div style={{ height: 250, backgroundColor: "#F26835", padding: 24, display: "flex", justifyContent: "space-between"}}>
-//           <h1 style={{ color: "#ffffff"}}>VINK</h1>
-//           <div style={{ display: "flex", gap: 8}}>
-//             <Link href={"/fi"}>
-//               <button style={{ height: 40, width: 40, fontSize: 24, backgroundColor: "transparent", outline: "none", border: "1px solid #193773", color: "#193773", cursor: "pointer"}}>
-//                 fi
-//               </button>
-//             </Link>
-//             <Link href={"/sv"}>
-//               <button style={{ height: 40, width: 40, fontSize: 24, backgroundColor: "transparent", outline: "none", border: "1px solid #193773", color: "#193773", cursor: "pointer"}}>
-//                 sv
-//               </button>
-//             </Link>
-//             <Link href={"/en"}>
-//               <button style={{ height: 40, width: 40, fontSize: 24, backgroundColor: "transparent", outline: "none", border: "1px solid #193773", color: "#193773", cursor: "pointer"}}>
-//                 en
-//               </button>
-//             </Link>
-//           </div>
-//         </div>
-//       </Container>
-//       </div>
-//   )
-// }
 import MenuIcon from "@mui/icons-material/Menu";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -44,6 +14,7 @@ import { styled } from "@mui/material/styles";
 import styles from "../../styles/Home.module.css";
 import vinkLogo from "../../public/svg/vinkLogo1.svg";
 import Image from "next/image";
+import {useTheme} from "@mui/material";
 
 const useStyles = styled({
   logo: {
@@ -57,6 +28,7 @@ const useStyles = styled({
 });
 
 const Navbar = () => {
+    const theme = useTheme();
     const classes = useStyles();
     const [anchorElNav, setAnchorElNav] = React.useState(null);
 
@@ -150,19 +122,19 @@ const Navbar = () => {
                   }}
               >
                 <Button
-                    sx={{ color: "secondary.main", fontSize: 19 }}
+                    sx={{ color: theme.palette.primary.main, fontSize: 19 }}
                     onClick={() => handleButtonClick("/")}
                 >
                   {/*{`${t("events")}`}*/}
                 </Button>
                 <Button
-                    sx={{ color: "secondary.main", fontSize: 19 }}
+                    sx={{ color: theme.palette.secondary.main, fontSize: 19 }}
                     onClick={() => handleButtonClick("/hobbies")}
                 >
                  {/* {`${t("hobbies")}`}*/}
                 </Button>
                 <Button
-                    sx={{ color: "secondary.main", fontSize: 19 }}
+                    sx={{ color: theme.palette.secondary.main, fontSize: 19 }}
                     onClick={() => handleButtonClick("/educations")}
                 >
                   {/*{`${t("educations")}`}*/}
@@ -177,7 +149,7 @@ const Navbar = () => {
               >
                 <div
                     style={{
-                      backgroundColor: 'secondary.main',
+                      backgroundColor: theme.palette.secondary.main,
                       padding: "4px",
                       clipPath:
                           "polygon(9px 0, 100% 0, calc(100% - 9px) 100%, 0 100%)",
@@ -192,7 +164,7 @@ const Navbar = () => {
                             i18n.language === "fi" ? "#fff" : "primary.main",
                         color: i18n.language === "fi" ? "primary.main" : "#ffff",*/
                         "&:hover": {
-                          color: 'primary.main',
+                          color: theme.palette.primary.main,
                           backgroundColor: "#fff",
                         },
                       }}
@@ -203,7 +175,7 @@ const Navbar = () => {
 
                 <div
                     style={{
-                      backgroundColor: 'secondary.main',
+                      backgroundColor: theme.palette.secondary.main,
                       padding: "4px",
                       clipPath:
                           "polygon(9px 0, 100% 0, calc(100% - 9px) 100%, 0 100%)",
@@ -218,7 +190,7 @@ const Navbar = () => {
                             i18n.language === "sv" ? "#ffffff" : "primary.main",
                         color: i18n.language === "sv" ? "primary.main" : "#ffff",*/
                         "&:hover": {
-                          color: 'primary.main',
+                          color: theme.palette.primary.main,
                           backgroundColor: "#fff",
                         },
                       }}
@@ -228,7 +200,7 @@ const Navbar = () => {
                 </div>
                 <div
                     style={{
-                      backgroundColor: 'secondary.main',
+                      backgroundColor: theme.palette.secondary.main,
                       padding: "4px",
                       clipPath:
                           "polygon(9px 0, 100% 0, calc(100% - 9px) 100%, 0 100%)",
@@ -242,12 +214,11 @@ const Navbar = () => {
                             i18n.language === "en" ? "#ffffff" : "primary.main",
                         color: i18n.language === "en" ? "primary.main" : "#ffff",*/
                         "&:hover": {
-                          color: 'primary.main',
+                          color: theme.palette.primary.main,
                           backgroundColor: "#fff",
                         },
                       }}
                       className={styles.languageBtn}
-                      onClick={() => i18n.changeLanguage("en")}
                   >
                     En
                   </Button>
