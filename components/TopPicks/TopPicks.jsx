@@ -4,7 +4,7 @@ const TopPicks = ({ props, locale }) => {
 
   console.log(props)
   return (
-    <div style={{ display: "flex", justifyContent: "center", margin: "24px 0"}}>
+    <div style={{ display: "flex", justifyContent: "center", margin: "24px 0" }}>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 456px)", gridTemplateRows: "repeat(2, 308px)", gap: 24 }}>
         {props.grid_items.map((item, index) => (
           <Link key={index} href={item.url[locale]}>
@@ -21,7 +21,7 @@ const TopPicks = ({ props, locale }) => {
               flexDirection: "column",
               justifyContent: item.label_position
             }}>
-              <h2 style={{ fontWeight: 400, backgroundColor: item.text_background_color, textAlign: "center", color: item.text_color, padding: 8, borderRadius: 4}}>{item?.title?.[locale]}</h2>
+              <h2 style={{ fontSize: 28, fontWeight: 900, letterSpacing: 1.5, backgroundColor: item.text_background_color, textAlign: item.label_position, color: item.text_color, padding: 8, borderRadius: 4 }}>{item?.title?.[locale]}</h2>
             </div>
           </Link>
         ))}
