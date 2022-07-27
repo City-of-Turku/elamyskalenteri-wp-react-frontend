@@ -1,4 +1,5 @@
 
+import Link from "next/link";
 import MenuIcon from "@mui/icons-material/Menu";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -163,22 +164,24 @@ const Navbar = () => {
                           "polygon(9px 0, 100% 0, calc(100% - 9px) 100%, 0 100%)",
                     }}
                 >
-                  <Button
-                      className={styles.languageBtn}
-                      sx={{
-                        fontSize: 19,
-                        borderRadius: 0,
-/*                        backgroundColor:
-                            i18n.language === "fi" ? "#fff" : "primary.main",
-                        color: i18n.language === "fi" ? "primary.main" : "#ffff",*/
-                        "&:hover": {
-                          color: theme.palette.primary.main,
-                          backgroundColor: "#fff",
-                        },
-                      }}
-                  >
-                    Fi
-                  </Button>
+                    <Link href={"/fi"}>
+                        <Button
+                            className={styles.languageBtn}
+                            sx={{
+                                fontSize: 19,
+                                borderRadius: 0,
+                                /*                        backgroundColor:
+                                                            i18n.language === "fi" ? "#fff" : "primary.main",
+                                                        color: i18n.language === "fi" ? "primary.main" : "#ffff",*/
+                                "&:hover": {
+                                    color: theme.palette.primary.main,
+                                    backgroundColor: "#fff",
+                                },
+                            }}
+                        >
+                            Fi
+                        </Button>
+                    </Link>
                 </div>
 
                 <div
@@ -189,22 +192,24 @@ const Navbar = () => {
                           "polygon(9px 0, 100% 0, calc(100% - 9px) 100%, 0 100%)",
                     }}
                 >
-                  <Button
-                      className={styles.languageBtn}
-                      sx={{
-                        fontSize: 19,
-                        borderRadius: 0,
-/*                        backgroundColor:
-                            i18n.language === "sv" ? "#ffffff" : "primary.main",
-                        color: i18n.language === "sv" ? "primary.main" : "#ffff",*/
-                        "&:hover": {
-                          color: theme.palette.primary.main,
-                          backgroundColor: "#fff",
-                        },
-                      }}
-                  >
-                    Sv
-                  </Button>
+                    <Link href={"/sv"}>
+                        <Button
+                            className={styles.languageBtn}
+                            sx={{
+                                fontSize: 19,
+                                borderRadius: 0,
+                                /*                        backgroundColor:
+                                                            i18n.language === "sv" ? "#ffffff" : "primary.main",
+                                                        color: i18n.language === "sv" ? "primary.main" : "#ffff",*/
+                                "&:hover": {
+                                    color: theme.palette.primary.main,
+                                    backgroundColor: "#fff",
+                                },
+                            }}
+                        >
+                            Sv
+                        </Button>
+                    </Link>
                 </div>
                 <div
                     style={{
@@ -214,22 +219,24 @@ const Navbar = () => {
                           "polygon(9px 0, 100% 0, calc(100% - 9px) 100%, 0 100%)",
                     }}
                 >
-                  <Button
-                      sx={{
-                        fontSize: 19,
-                        borderRadius: 0,
-/*                        backgroundColor:
-                            i18n.language === "en" ? "#ffffff" : "primary.main",
-                        color: i18n.language === "en" ? "primary.main" : "#ffff",*/
-                        "&:hover": {
-                          color: theme.palette.primary.main,
-                          backgroundColor: "#fff",
-                        },
-                      }}
-                      className={styles.languageBtn}
-                  >
-                    En
-                  </Button>
+                    <Link href={"/en"}>
+                        <Button
+                            sx={{
+                                fontSize: 19,
+                                borderRadius: 0,
+                                /*                        backgroundColor:
+                                                            i18n.language === "en" ? "#ffffff" : "primary.main",
+                                                        color: i18n.language === "en" ? "primary.main" : "#ffff",*/
+                                "&:hover": {
+                                    color: theme.palette.primary.main,
+                                    backgroundColor: "#fff",
+                                },
+                            }}
+                            className={styles.languageBtn}
+                        >
+                            En
+                        </Button>
+                    </Link>
                 </div>
               </Box>
             </Toolbar>
