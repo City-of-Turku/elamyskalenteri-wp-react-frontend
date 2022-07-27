@@ -3,7 +3,7 @@ import Navbar from "../Navbar/Navbar";
 const Layout = ({ children, locale }) => {
   return (
     <>
-      <Navbar />
+      <Navbar locale={locale}/>
       <main>
         {children}
       </main>

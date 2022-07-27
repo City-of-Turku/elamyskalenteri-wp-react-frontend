@@ -28,7 +28,7 @@ const useStyles = styled({
   },
 });
 
-const Navbar = () => {
+const Navbar = ({ locale }) => {
     const theme = useTheme();
     const classes = useStyles();
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -170,9 +170,8 @@ const Navbar = () => {
                             sx={{
                                 fontSize: 19,
                                 borderRadius: 0,
-                                /*                        backgroundColor:
-                                                            i18n.language === "fi" ? "#fff" : "primary.main",
-                                                        color: i18n.language === "fi" ? "primary.main" : "#ffff",*/
+                                backgroundColor: locale === "fi" ? "#fff" : "primary.main",
+                                color: locale === "fi" ? "primary.main" : "#ffff",
                                 "&:hover": {
                                     color: theme.palette.primary.main,
                                     backgroundColor: "#fff",
@@ -198,9 +197,8 @@ const Navbar = () => {
                             sx={{
                                 fontSize: 19,
                                 borderRadius: 0,
-                                /*                        backgroundColor:
-                                                            i18n.language === "sv" ? "#ffffff" : "primary.main",
-                                                        color: i18n.language === "sv" ? "primary.main" : "#ffff",*/
+                                backgroundColor: locale === "sv" ? "#fff" : "primary.main",
+                                color: locale === "sv" ? "primary.main" : "#ffff",
                                 "&:hover": {
                                     color: theme.palette.primary.main,
                                     backgroundColor: "#fff",
@@ -224,9 +222,8 @@ const Navbar = () => {
                             sx={{
                                 fontSize: 19,
                                 borderRadius: 0,
-                                /*                        backgroundColor:
-                                                            i18n.language === "en" ? "#ffffff" : "primary.main",
-                                                        color: i18n.language === "en" ? "primary.main" : "#ffff",*/
+                                backgroundColor: locale === "en" ? "#fff" : "primary.main",
+                                color: locale === "en" ? "primary.main" : "#ffff",
                                 "&:hover": {
                                     color: theme.palette.primary.main,
                                     backgroundColor: "#fff",
