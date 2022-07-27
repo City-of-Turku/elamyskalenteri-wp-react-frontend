@@ -72,9 +72,17 @@ const Navbar = () => {
                   component="div"
                   sx={{ flexGrow: 2, display: { xs: "none", lg: "flex", md: "flex"  } }}
               >
+                  <div
+                      style={{
+                          clipPath: "polygon(17px 0, 100% 0, calc(100% - 17px) 100%, 0 100%)",
+                          backgroundColor: "#fff",
+                          padding: "6px 30px 0px 30px",
+                          transform: "rotate(-9.28deg)",
+                      }}>
                 <a href={"/"}>
-                  <Image className={classes.logo} src={vinkLogo} alt="Vink logo" />
+                    <Image src={vinkLogo} alt="Vink logo" height={100} width={195}/>
                 </a>
+                </div>
               </Typography>
               <Box sx={{ flexGrow: 2, display: { xs: "flex", md: "none" } }}>
                 <IconButton
@@ -122,22 +130,22 @@ const Navbar = () => {
                   }}
               >
                 <Button
-                    sx={{ color: theme.palette.primary.main, fontSize: 19 }}
+                    sx={{ color: theme.palette.secondary.main, fontSize: 19 }}
                     onClick={() => handleButtonClick("/")}
                 >
-                  {/*{`${t("events")}`}*/}
+                  Tapahtumat
                 </Button>
                 <Button
                     sx={{ color: theme.palette.secondary.main, fontSize: 19 }}
                     onClick={() => handleButtonClick("/hobbies")}
                 >
-                 {/* {`${t("hobbies")}`}*/}
+                    Harrastukset
                 </Button>
                 <Button
                     sx={{ color: theme.palette.secondary.main, fontSize: 19 }}
                     onClick={() => handleButtonClick("/educations")}
                 >
-                  {/*{`${t("educations")}`}*/}
+                  Koulutukset
                 </Button>
               </Box>
               <Box
