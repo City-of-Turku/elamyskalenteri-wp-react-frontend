@@ -12,7 +12,7 @@ const TopPicks = ({ props, locale }) => {
               color: "#ffffff",
               backgroundPosition: "center",
               borderRadius: 4,
-              padding: 24,
+              // padding: 24,
               backgroundColor: "#F2DA5E",
               gridRow: item.size === "2x1" ? "span 2" : "span 1",
               cursor: "pointer",
@@ -21,7 +21,7 @@ const TopPicks = ({ props, locale }) => {
               flexDirection: "column",
               justifyContent: item.label_position
             }}>
-              <h2 style={{ fontSize: 28, fontWeight: 900, letterSpacing: 1.5, backgroundColor: item.text_background_color, textAlign: item.label_position, color: item.text_color, padding: 8, borderRadius: 4 }}>{item?.title?.[locale]}</h2>
+              <h2 style={{ fontFamily: "halogen", fontSize: 28, fontWeight: 900, letterSpacing: 1.5, backgroundColor: item.text_background_color, textAlign: item.label_position, color: item.text_color, padding: 8 }}>{item?.title?.[locale]}</h2>
             </div>
           </Link>
         ))}
