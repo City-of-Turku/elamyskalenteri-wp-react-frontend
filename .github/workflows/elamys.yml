@@ -9,11 +9,11 @@ jobs:
   upload:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@main
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
-      - run: cd react-ui && npm ci && npm run build
+#      - run: cd react-ui && npm ci && npm run build
 #      - uses: shallwefootball/s3-upload-action@master
 #        with:
 #          aws_key_id: ${{ secrets.AWS_KEY_ID }}
