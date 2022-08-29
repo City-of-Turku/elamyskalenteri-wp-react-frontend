@@ -61,8 +61,8 @@ const LocalPicks = ({ props, locale }) => {
         {props.column.map((col, index) => (
           <div key={index} style={{ width: 456, textAlign: "center" }}>
             <h2 style={{ fontSize: 28, fontFamily: "halogen", backgroundColor: "#9AD9C2", color: "#193773", padding: 16, borderRadius: 4, fontWeight: 900, letterSpacing: 1 }}>{col.content.location}</h2>
-            {props.column.map((item) => (
-              <div className="localpicks">
+            {props.column.map((item, index) => (
+              <div key={index} className="localpicks">
                 <div style={{ position: "relative" }} >
                   {turku.images[0]?.url && (
                     <Box

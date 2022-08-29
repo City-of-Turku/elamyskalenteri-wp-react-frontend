@@ -112,10 +112,10 @@ const Navbar = ({ locale }) => {
                 onClose={handleCloseNavMenu}
                 sx={{ display: { xs: "flex", md: "flex" } }}
               >
-                {pages.map((page) => {
+                {pages.map((page, index) => {
                   const { menuTitle, pageURL } = page;
                   return (
-                    <MenuItem onClick={() => handleMenuClick(pageURL)}>
+                    <MenuItem key={index} onClick={() => handleMenuClick(pageURL)}>
                       {menuTitle}
                     </MenuItem>
                   );
