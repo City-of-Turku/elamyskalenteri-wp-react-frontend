@@ -12,3 +12,9 @@ to port 8080 or just allow anywhere-ipv4 to port 8080.
 
 ## Data flow explained:
 ![Data flow](dataflow.png)
+
+## Deploying to AWS
+```
+docker build -t elamyskalenteri-nextjs .
+aws lightsail push-container-image --region eu-north-1 --service-name elamyskalenteri-container-service --label elamyskalenteri-nextjs --image elamyskalenteri-nextjs:latest
+```
