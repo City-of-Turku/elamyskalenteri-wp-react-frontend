@@ -9,6 +9,9 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   staticPageGenerationTimeout: 180,
+  images:  {
+    domains: ['linkedevents-api.turku.fi', 'testilinkedevents-api.turku.fi' ],
+  },
 }
 
 module.exports = nextConfig

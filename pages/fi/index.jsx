@@ -3,7 +3,7 @@ import Layout from "../../components/Layout/Layout";
 
 const Home = ({ elements }) => {
   return (
-    <Layout>
+    <Layout locale={"fi"} >
       <IndexPage locale={"fi"} elements={elements} />
     </Layout>
   )

@@ -1,4 +1,5 @@
 
+import Link from "next/link";
 import MenuIcon from "@mui/icons-material/Menu";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -14,7 +15,7 @@ import { styled } from "@mui/material/styles";
 import styles from "../../styles/Home.module.css";
 import vinkLogo from "../../public/svg/vinkLogo1.svg";
 import Image from "next/image";
-import {useTheme} from "@mui/material";
+import { useTheme } from "@mui/material";
 
 const useStyles = styled({
   logo: {
@@ -27,28 +28,28 @@ const useStyles = styled({
   },
 });
 
-const Navbar = () => {
-    const theme = useTheme();
-    const classes = useStyles();
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
+const Navbar = ({ locale }) => {
+  const theme = useTheme();
+  const classes = useStyles();
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
 
-    const handleMenuClick = (pageURL) => {
-        history.push(pageURL);
-    };
+  const handleMenuClick = (pageURL) => {
+    history.push(pageURL);
+  };
 
-    const handleButtonClick = (pageURL) => {
-        history.push(pageURL);
-    };
+  const handleButtonClick = (pageURL) => {
+    history.push(pageURL);
+  };
 
-    const handleOpenNavMenu = (event) => {
-        setAnchorElNav(event.currentTarget);
-    };
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
 
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
-    };
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
 
-    const pages = [
+  const pages = [
     {
       menuTitle: "Tapahtumat",
       pageURL: "/",
@@ -64,189 +65,200 @@ const Navbar = () => {
   ];
 
   return (
-      <div className={styles.customizeToolbar}>
-        <AppBar position="static" elevation={0}>
-          <Container maxWidth="xl">
-            <Toolbar disableGutters style={{ height: 220 }}>
-              <Typography
-                  component="div"
-                  sx={{ flexGrow: 2, display: { xs: "none", lg: "flex", md: "flex"  } }}
-              >
+    <div className={styles.customizeToolbar}>
+      <AppBar position="static" elevation={0}>
+        <Container maxWidth="xl">
+          <Toolbar disableGutters style={{ height: 220 }}>
+            <Typography
+              component="div"
+              sx={{ flexGrow: 2, display: { xs: "none", lg: "flex", md: "flex" } }}
+            >
+              <div
+                style={{
+                  clipPath: "polygon(17px 0, 100% 0, calc(100% - 17px) 100%, 0 100%)",
+                  backgroundColor: "#fff",
+                  padding: "6px 30px 0px 30px",
+                  transform: "rotate(-9.28deg)",
+                }}>
                 <a href={"/"}>
-                  <Image className={classes.logo} src={vinkLogo} alt="Vink logo" />
+                  <Image src={vinkLogo} alt="Vink logo" height={100} width={195} />
                 </a>
-              </Typography>
-              <Box sx={{ flexGrow: 2, display: { xs: "flex", md: "none" } }}>
-                <IconButton
-                    size="large"
-                    aria-label="account of current user"
-                    aria-controls="menu-appbar"
-                    aria-haspopup="true"
-                    onClick={handleOpenNavMenu}
-                    color="inherit"
-                >
-                  <MenuIcon />
-                </IconButton>
-                <Menu
-                    id="menu-appbar"
-                    anchorEl={anchorElNav}
-                    anchorOrigin={{
-                      vertical: "top",
-                      horizontal: "left",
-                    }}
-                    keepMounted
-                    transformOrigin={{
-                      vertical: "top",
-                      horizontal: "left",
-                    }}
-                    open={Boolean(anchorElNav)}
-                    onClose={handleCloseNavMenu}
-                    sx={{ display: { xs: "flex", md: "flex" } }}
-                >
-                  {pages.map((page) => {
-                    const { menuTitle, pageURL } = page;
-                    return (
-                        <MenuItem onClick={() => handleMenuClick(pageURL)}>
-                          {menuTitle}
-                        </MenuItem>
-                    );
-                  })}
-                </Menu>
-              </Box>
+              </div>
+            </Typography>
+            <Box sx={{ flexGrow: 2, display: { xs: "flex", md: "none" } }}>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleOpenNavMenu}
+                color="inherit"
+              >
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorElNav}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "left",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "left",
+                }}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+                sx={{ display: { xs: "flex", md: "flex" } }}
+              >
+                {pages.map((page, index) => {
+                  const { menuTitle, pageURL } = page;
+                  return (
+                    <MenuItem key={index} onClick={() => handleMenuClick(pageURL)}>
+                      {menuTitle}
+                    </MenuItem>
+                  );
+                })}
+              </Menu>
+            </Box>
 
-              <Box
-                  sx={{
-                    flexGrow: 1,
-                    display: { xs: "none", lg: "flex", md: "block" },
-                    alignItems: "center",
-                  }}
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: { xs: "none", lg: "flex", md: "block" },
+                alignItems: "center",
+              }}
+            >
+              <Button
+                sx={{ color: theme.palette.secondary.main, fontSize: 19 }}
+                onClick={() => handleButtonClick("/")}
               >
-                <Button
-                    sx={{ color: theme.palette.primary.main, fontSize: 19 }}
-                    onClick={() => handleButtonClick("/")}
-                >
-                  {/*{`${t("events")}`}*/}
-                </Button>
-                <Button
-                    sx={{ color: theme.palette.secondary.main, fontSize: 19 }}
-                    onClick={() => handleButtonClick("/hobbies")}
-                >
-                 {/* {`${t("hobbies")}`}*/}
-                </Button>
-                <Button
-                    sx={{ color: theme.palette.secondary.main, fontSize: 19 }}
-                    onClick={() => handleButtonClick("/educations")}
-                >
-                  {/*{`${t("educations")}`}*/}
-                </Button>
-              </Box>
-              <Box
-                  sx={{
-                    flexGrow: 1,
-                    display: { xs: "flex", md: "flex" },
-                    alignItems: "center",
-                  }}
+                Tapahtumat
+              </Button>
+              <Button
+                sx={{ color: theme.palette.secondary.main, fontSize: 19 }}
+                onClick={() => handleButtonClick("/hobbies")}
               >
-                <div
-                    style={{
-                      backgroundColor: theme.palette.secondary.main,
-                      padding: "4px",
-                      clipPath:
-                          "polygon(9px 0, 100% 0, calc(100% - 9px) 100%, 0 100%)",
-                    }}
-                >
+                Harrastukset
+              </Button>
+              <Button
+                sx={{ color: theme.palette.secondary.main, fontSize: 19 }}
+                onClick={() => handleButtonClick("/educations")}
+              >
+                Koulutukset
+              </Button>
+            </Box>
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: { xs: "flex", md: "flex" },
+                alignItems: "center",
+              }}
+            >
+              <div
+                style={{
+                  backgroundColor: theme.palette.secondary.main,
+                  padding: "4px",
+                  clipPath:
+                    "polygon(9px 0, 100% 0, calc(100% - 9px) 100%, 0 100%)",
+                }}
+              >
+                <Link href={"/fi"}>
                   <Button
-                      className={styles.languageBtn}
-                      sx={{
-                        fontSize: 19,
-                        borderRadius: 0,
-/*                        backgroundColor:
-                            i18n.language === "fi" ? "#fff" : "primary.main",
-                        color: i18n.language === "fi" ? "primary.main" : "#ffff",*/
-                        "&:hover": {
-                          color: theme.palette.primary.main,
-                          backgroundColor: "#fff",
-                        },
-                      }}
+                    className={styles.languageBtn}
+                    sx={{
+                      fontSize: 19,
+                      borderRadius: 0,
+                      backgroundColor: locale === "fi" ? "#fff" : "primary.main",
+                      color: locale === "fi" ? "primary.main" : "#ffff",
+                      "&:hover": {
+                        color: theme.palette.primary.main,
+                        backgroundColor: "#fff",
+                      },
+                    }}
                   >
                     Fi
                   </Button>
-                </div>
+                </Link>
+              </div>
 
-                <div
-                    style={{
-                      backgroundColor: theme.palette.secondary.main,
-                      padding: "4px",
-                      clipPath:
-                          "polygon(9px 0, 100% 0, calc(100% - 9px) 100%, 0 100%)",
-                    }}
-                >
+              <div
+                style={{
+                  backgroundColor: theme.palette.secondary.main,
+                  padding: "4px",
+                  clipPath:
+                    "polygon(9px 0, 100% 0, calc(100% - 9px) 100%, 0 100%)",
+                }}
+              >
+                <Link href={"/sv"}>
                   <Button
-                      className={styles.languageBtn}
-                      sx={{
-                        fontSize: 19,
-                        borderRadius: 0,
-/*                        backgroundColor:
-                            i18n.language === "sv" ? "#ffffff" : "primary.main",
-                        color: i18n.language === "sv" ? "primary.main" : "#ffff",*/
-                        "&:hover": {
-                          color: theme.palette.primary.main,
-                          backgroundColor: "#fff",
-                        },
-                      }}
+                    className={styles.languageBtn}
+                    sx={{
+                      fontSize: 19,
+                      borderRadius: 0,
+                      backgroundColor: locale === "sv" ? "#fff" : "primary.main",
+                      color: locale === "sv" ? "primary.main" : "#ffff",
+                      "&:hover": {
+                        color: theme.palette.primary.main,
+                        backgroundColor: "#fff",
+                      },
+                    }}
                   >
                     Sv
                   </Button>
-                </div>
-                <div
-                    style={{
-                      backgroundColor: theme.palette.secondary.main,
-                      padding: "4px",
-                      clipPath:
-                          "polygon(9px 0, 100% 0, calc(100% - 9px) 100%, 0 100%)",
-                    }}
-                >
+                </Link>
+              </div>
+              <div
+                style={{
+                  backgroundColor: theme.palette.secondary.main,
+                  padding: "4px",
+                  clipPath:
+                    "polygon(9px 0, 100% 0, calc(100% - 9px) 100%, 0 100%)",
+                }}
+              >
+                <Link href={"/en"}>
                   <Button
-                      sx={{
-                        fontSize: 19,
-                        borderRadius: 0,
-/*                        backgroundColor:
-                            i18n.language === "en" ? "#ffffff" : "primary.main",
-                        color: i18n.language === "en" ? "primary.main" : "#ffff",*/
-                        "&:hover": {
-                          color: theme.palette.primary.main,
-                          backgroundColor: "#fff",
-                        },
-                      }}
-                      className={styles.languageBtn}
+                    sx={{
+                      fontSize: 19,
+                      borderRadius: 0,
+                      backgroundColor: locale === "en" ? "#fff" : "primary.main",
+                      color: locale === "en" ? "primary.main" : "#ffff",
+                      "&:hover": {
+                        color: theme.palette.primary.main,
+                        backgroundColor: "#fff",
+                      },
+                    }}
+                    className={styles.languageBtn}
                   >
                     En
                   </Button>
-                </div>
-              </Box>
-            </Toolbar>
-            <Box
-                sx={{
-                  pb: 4,
-                  flexGrow: 1,
-                  display: { xs: "none", md: "block" },
-                  alignItems: "center",
-                  fontSize: 35,
-                  fontFamily: "halogen",
-                  fontWeight: 900,
-                  whiteSpace: "nowrap",
-                  wordWrap: "break-word",
-                }}
-                style={{ textAlign: "center" }}
-            >
-              <span style={{ color: "#fffff" }}>Vink </span>
-              <span style={{ color: 'primary.dark' }}>
+                </Link>
+              </div>
+            </Box>
+          </Toolbar>
+          <Box
+            sx={{
+              pb: 4,
+              flexGrow: 1,
+              display: { xs: "none", md: "block" },
+              alignItems: "center",
+              fontSize: 35,
+              fontFamily: "halogen",
+              fontWeight: 900,
+              whiteSpace: "nowrap",
+              wordWrap: "break-word",
+            }}
+            style={{ textAlign: "center" }}
+          >
+            <span style={{ color: "#fffff" }}>Vink </span>
+            <span style={{ color: theme.palette.primary.dark }}>
               - ja löydä tekemistä
             </span>
-            </Box>
-          </Container>
-        </AppBar>
-      </div>
+          </Box>
+        </Container>
+      </AppBar>
+    </div>
   );
 };
 

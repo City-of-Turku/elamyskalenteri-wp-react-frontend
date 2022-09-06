@@ -5,9 +5,8 @@ const IndexPage = ({ locale, elements }) => {
   return (
     <>
       <Head>
-        <title>
-          Elämyskalenteri
-        </title>
+        <title>Elämyskalenteri</title>
+        <link rel="stylesheet" href="https://use.typekit.net/qjp6osq.css" />
       </Head>
       <div>
         {elements?.map((element, index) => (
@@ -16,7 +15,7 @@ const IndexPage = ({ locale, elements }) => {
             component={element?.acf_fc_layout}
             props={element}
             locale={locale}
-            />
+          />
         ))}
       </div>
     </>
