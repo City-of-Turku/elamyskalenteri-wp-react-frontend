@@ -1,21 +1,62 @@
 import IndexPage from "../../pageComponents/Index";
 import Layout from "../../components/Layout/Layout";
 import Box from "@mui/material/Box";
+import Image from "next/image";
+import vinkLogo from "../../public/svg/vinkLogo1.svg";
+import Button from "@mui/material/Button";
+import {useTheme} from "@mui/material";
 
 const Home = ({ elements }) => {
+
+  const theme = useTheme();
+
+  const handleButtonClick = (pageURL) => {
+    history.push(pageURL);
+  };
+
   return (
     <Layout locale={"en"} >
       <IndexPage locale={"en"} elements={elements} />
+
+      <Box style={{ backgroundColor: "#f2ca99", color: "#ffffff", padding: 12}}>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <div style={{ display: "grid", width: "1416px", gridTemplateColumns: "1fr 3fr 1fr", gap: 24 }}>
+            <a href={"/"}>
+              <Image src={vinkLogo} alt="Vink logo" height={100} width={195} />
+            </a>
+            <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+              <Button
+                  sx={{ color: theme.palette.secondary.main, fontSize: 19 }}
+                  onClick={() => handleButtonClick("/")}
+              >
+                Events
+              </Button>
+              <Button
+                  sx={{ color: theme.palette.secondary.main, fontSize: 19 }}
+                  onClick={() => handleButtonClick("/hobbies")}
+              >
+                Hobbies
+              </Button>
+              <Button
+                  sx={{ color: theme.palette.secondary.main, fontSize: 19 }}
+                  onClick={() => handleButtonClick("/educations")}
+              >
+                Education
+              </Button>
+            </div>
+          </div>
+        </div>
+      </Box>
       <Box style={{ height: 334, backgroundColor: "#193773", color: "#ffffff", padding: 24}}>
         <div style={{ display: "flex", justifyContent: "center", margin: "24px 0" }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 456px)", gridTemplateRows: "repeat(1, 150px)", gap: 24 }}>
             <div>
               <h2 style={{ fontSize: 18, fontFamily: "halogen", color: "#FFF", paddingTop: "16px", marginBottom: 0, borderRadius: 4, fontWeight: 700, letterSpacing: 1 }}>Regional collaboration</h2>
-              <div style={{ display: "flex"}}>
-                <p className={"fat"} style={{ margin: "0 15px 0 0" }}>Turku</p>
-                <p className={"fat"}  style={{ margin: "0 15px 0 0" }}>Naantali</p>
-                <p className={"fat"}  style={{ margin: "0 15px 0 0" }}>Raisio</p>
-                <p className={"fat"}  style={{ margin: "0 0 0 0" }}>Kaarina</p>
+              <div style={{ display: "flex", fontWeight: 700}}>
+                <p style={{ margin: "0 15px 0 0" }}>Turku</p>
+                <p style={{ margin: "0 15px 0 0" }}>Naantali</p>
+                <p style={{ margin: "0 15px 0 0" }}>Raisio</p>
+                <p style={{ margin: "0 0 0 0" }}>Kaarina</p>
               </div>
             </div>
             <div>
