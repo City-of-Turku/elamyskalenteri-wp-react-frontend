@@ -5,6 +5,9 @@ import Button from "@mui/material/Button";
 import { useTheme } from "@mui/material";
 import Image from "next/image";
 import vinkLogo from "../../public/svg/vinkLogo1.svg";
+import Link from "next/link";
+import styles from "../../styles/Home.module.css";
+import Typography from "@mui/material/Typography";
 
 
 const Home = ({ elements }) => {
@@ -44,6 +47,35 @@ const Home = ({ elements }) => {
               >
                 Koulutukset
               </Button>
+            </div>
+            <div
+                style={{
+                  backgroundColor: theme.palette.secondary.main,
+                  padding: "4px",
+                  clipPath:
+                      "polygon(9px 0, 100% 0, calc(100% - 9px) 100%, 0 100%)",
+                  height: "fit-content",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignSelf: "center",
+                }}
+            >
+              <Link href={"#"}>
+                <Button
+                    sx={{
+                      borderRadius: 0,
+                      backgroundColor: "primary.dark",
+                      color: "#fff",
+                      "&:hover": {
+                        color: theme.palette.primary.dark,
+                        backgroundColor: "#fff",
+                      },
+                    }}
+                    className={styles.languageBtn}
+                >
+                  <Typography sx={{ textTransform: 'uppercase !important', padding: '0px 12px 0px 12px' }} className={styles.languageBtnText}>Lisää tapahtuma</Typography>
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
