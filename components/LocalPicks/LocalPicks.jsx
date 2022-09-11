@@ -80,6 +80,13 @@ const LocalPicks = ({ props, locale }) => {
                       alt="Avatar"
                     />
                   )}
+                    <div style={{ position: "absolute", left: "30%", bottom: "-43%", transform: "translate(-50%, -50%)", width: 0, height: 0, borderBottom: "100px solid white", borderRight: "100px solid transparent"}}></div>
+                    <Typography sx={{ position: "absolute", left: "14%", bottom: 0, transform: "translate(-50%, -50%)", fontSize: 16, fontWeight: 700, fontStyle: 'normal', letterSpacing: 2, color: '#193773', lineHeight: 2, marginBottom:"10px" }}>
+                        {dayjs(turku.start_time).format("DD")}
+                    </Typography>
+                    <Typography sx={{ position: "absolute", left: "15%", bottom: 0, transform: "translate(-50%, -50%)", fontSize: 12, fontWeight: 500, fontStyle: 'normal', letterSpacing: 2, color: '#193773', lineHeight: 2 }}>
+                        {dayjs(turku.start_time).format("MMM")}
+                    </Typography>
                 </div>
                 <div style={{ textAlign: "left", paddingLeft: 25 }}>
                   <Typography sx={{ fontSize: 14, fontFamily: 'Forma DJR Micro', fontWeight: 500, fontStyle: 'normal', letterSpacing: 2, color: '#193773', lineHeight: 2 }}>{dayjs(turku.start_time).format("DD.MM.YYYY | HH:mm")} - {dayjs(turku.end_time).format("HH:mm")}</Typography>
