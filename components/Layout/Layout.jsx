@@ -1,4 +1,6 @@
 import Navbar from "../Navbar/Navbar";
+import Box from "@mui/material/Box";
+import DynamicComponent from "../DynamicComponent/dynamicComponent";
 
 const Layout = ({ children, locale }) => {
   return (
@@ -7,8 +9,6 @@ const Layout = ({ children, locale }) => {
       <main>
         {children}
       </main>
-      <div style={{ height: 334, backgroundColor: "#193773", color: "#ffffff", padding: 24}}>
-      </div>
     </>
   )
 }
