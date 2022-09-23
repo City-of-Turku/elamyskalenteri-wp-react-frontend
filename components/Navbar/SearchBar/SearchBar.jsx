@@ -16,7 +16,7 @@ const SearchBar = () => {
             <div className={styles.searchBar} onClick={handleClick}>
                 <input className={styles.searchInput} type="search" placeholder="Aloita etsiminen tästä" />
                 <div className={styles.searchIcon}>
-                    <SearchIcon />
+                    <SearchIcon sx={{ fontSize: 32 }} />
                 </div>
             </div>
         </>
