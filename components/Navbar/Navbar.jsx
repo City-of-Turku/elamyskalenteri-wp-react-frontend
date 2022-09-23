@@ -22,6 +22,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import EventIcon from '@mui/icons-material/Event';
 import SportsFootballIcon from '@mui/icons-material/SportsFootball';
 import SchoolIcon from '@mui/icons-material/School';
+import SearchBar from './SearchBar/SearchBar';
 
 const drawerWidth = 240;
 const navItems = ['Tapahtumat', 'Harrastukset', 'Koulutukset'];
@@ -124,7 +125,7 @@ function DrawerAppBar(props) {
           sx={{
             pb: 4,
             display: { xs: "none", md: "block" },
-            fontSize: 40,
+            fontSize: 44,
             fontFamily: "halogen",
             fontWeight: 900,
             whiteSpace: "nowrap",
@@ -132,11 +133,12 @@ function DrawerAppBar(props) {
           }}
           style={{ textAlign: "center", letterSpacing: 1 }}
         >
-          <span style={{ color: "#ffff" }}>Vink </span>
+          <span style={{ color: "#ffff", }}>Vink </span>
           <span style={{ color: theme.palette.primary.dark }}>
             - ja löydä tekemistä.
           </span>
         </Box>
+        <SearchBar />
       </AppBar>
       <Box component="nav">
         <Drawer
@@ -158,7 +160,10 @@ function DrawerAppBar(props) {
       <Box component="main" sx={{ p: 3 }}>
         <Toolbar />
       </Box>
+
+
     </Box>
+
   );
 }
 
