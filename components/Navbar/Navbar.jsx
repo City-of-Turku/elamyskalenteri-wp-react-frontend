@@ -1,265 +1,170 @@
 
-import Link from "next/link";
-import MenuIcon from "@mui/icons-material/Menu";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Container from "@mui/material/Container";
-import IconButton from "@mui/material/IconButton";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import * as React from "react";
-import { styled } from "@mui/material/styles";
-import styles from "../../styles/Home.module.css";
 import vinkLogo from "../../public/svg/vinkLogo1.svg";
-import Image from "next/image";
+import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Divider from '@mui/material/Divider';
+import Drawer from '@mui/material/Drawer';
+import IconButton from '@mui/material/IconButton';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import MenuIcon from '@mui/icons-material/Menu';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import { withRouter } from "next/router";
+import ListItemIcon from '@mui/material/ListItemIcon';
 import { useTheme } from "@mui/material";
+import Image from "next/image";
+import LangSelect from "./langSelect";
+import HomeIcon from '@mui/icons-material/Home';
+import EventIcon from '@mui/icons-material/Event';
+import SportsFootballIcon from '@mui/icons-material/SportsFootball';
+import SchoolIcon from '@mui/icons-material/School';
+import SearchBar from './SearchBar/SearchBar';
 
-const useStyles = styled({
-  logo: {
-    width: 195,
-    height: 100,
-    clipPath: "polygon(5px 0, 100% 0, calc(100% - 10px) 100%, 0 100%)",
-    backgroundColor: "#fff",
-    padding: "1px 25px 1px 25px",
-    transform: "rotate(-9.28deg)",
-  },
-});
+const drawerWidth = 240;
+const navItems = ['Tapahtumat', 'Harrastukset', 'Koulutukset'];
 
-const Navbar = ({ locale }) => {
+function DrawerAppBar(props) {
+
+  const { window, history } = props;
+
+  const mobileNavItems = [
+    {
+      text: "Etusivu",
+      icon: <HomeIcon />,
+      onClick: () => history.push('/'),
+    },
+    {
+      text: "Tapahtumat",
+      icon: <EventIcon />
+    },
+    {
+      text: "Harrastukset",
+      icon: <SportsFootballIcon />
+    },
+    {
+      text: "Koulutukset",
+      icon: <SchoolIcon />
+    }
+  ]
+
+  const [mobileOpen, setMobileOpen] = React.useState(false);
   const theme = useTheme();
-  const classes = useStyles();
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-
-  const handleMenuClick = (pageURL) => {
-    history.push(pageURL);
+  // const classes = useStyles();
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
   };
 
-  const handleButtonClick = (pageURL) => {
-    history.push(pageURL);
-  };
+  const drawer = (
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+      <Box sx={{ my: 4 }}>
+        <a href={"/"}><Image src={vinkLogo} alt="Vink logo" height={50} width={150} /></a>
+      </Box>
+      <Divider />
+      <List>
+        {mobileNavItems.map((item, index) => {
+          const { text, icon } = item;
+          return (
+            <ListItem button key={text}>
+              {icon && <ListItemIcon>{icon}</ListItemIcon>}
+              <ListItemText primary={text} />
+            </ListItem>
+          )
+        })}
+      </List>
+    </Box>
+  );
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const pages = [
-    {
-      menuTitle: "Tapahtumat",
-      pageURL: "/",
-    },
-    {
-      menuTitle: "Harrastukset",
-      pageURL: "/hobbies",
-    },
-    {
-      menuTitle: "Koulutukset",
-      pageURL: "/educations",
-    },
-  ];
+  const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <div className={styles.customizeToolbar}>
-      <AppBar position="static" elevation={0}>
-        <Container maxWidth="xl">
-          <Toolbar disableGutters style={{ height: 220 }}>
-            <Typography
-              component="div"
-              sx={{ flexGrow: 2, display: { xs: "none", lg: "flex", md: "flex" } }}
-            >
-              <div
-                style={{
-                  clipPath: "polygon(17px 0, 100% 0, calc(100% - 17px) 100%, 0 100%)",
-                  backgroundColor: "#fff",
-                  padding: "6px 30px 0px 30px",
-                  transform: "rotate(-9.28deg)",
-                }}>
-                <a href={"/"}>
-                  <Image src={vinkLogo} alt="Vink logo" height={100} width={195} />
-                </a>
-              </div>
-            </Typography>
-            <Box sx={{ flexGrow: 2, display: { xs: "flex", md: "none" } }}>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleOpenNavMenu}
-                color="inherit"
-              >
-                <MenuIcon />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorElNav}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
-                }}
-                open={Boolean(anchorElNav)}
-                onClose={handleCloseNavMenu}
-                sx={{ display: { xs: "flex", md: "flex" } }}
-              >
-                {pages.map((page, index) => {
-                  const { menuTitle, pageURL } = page;
-                  return (
-                    <MenuItem key={index} onClick={() => handleMenuClick(pageURL)}>
-                      {menuTitle}
-                    </MenuItem>
-                  );
-                })}
-              </Menu>
-            </Box>
-
-            <Box
-              sx={{
-                flexGrow: 1,
-                display: { xs: "none", lg: "flex", md: "block" },
-                alignItems: "center",
-              }}
-            >
-              <Button
-                sx={{ color: theme.palette.secondary.main, fontSize: 19 }}
-                onClick={() => handleButtonClick("/")}
-              >
-                Tapahtumat
-              </Button>
-              <Button
-                sx={{ color: theme.palette.secondary.main, fontSize: 19 }}
-                onClick={() => handleButtonClick("/hobbies")}
-              >
-                Harrastukset
-              </Button>
-              <Button
-                sx={{ color: theme.palette.secondary.main, fontSize: 19 }}
-                onClick={() => handleButtonClick("/educations")}
-              >
-                Koulutukset
-              </Button>
-            </Box>
-            <Box
-              sx={{
-                flexGrow: 1,
-                display: { xs: "flex", md: "flex" },
-                alignItems: "center",
-              }}
-            >
-              <div
-                style={{
-                  backgroundColor: theme.palette.secondary.main,
-                  padding: "4px",
-                  clipPath:
-                    "polygon(9px 0, 100% 0, calc(100% - 9px) 100%, 0 100%)",
-                }}
-              >
-                <Link href={"/fi"}>
-                  <Button
-                    className={styles.languageBtn}
-                    sx={{
-                      fontSize: 19,
-                      borderRadius: 0,
-                      backgroundColor: locale === "fi" ? "#fff" : "primary.main",
-                      color: locale === "fi" ? "primary.main" : "#ffff",
-                      "&:hover": {
-                        color: theme.palette.primary.main,
-                        backgroundColor: "#fff",
-                      },
-                    }}
-                  >
-                    Fi
-                  </Button>
-                </Link>
-              </div>
-
-              <div
-                style={{
-                  backgroundColor: theme.palette.secondary.main,
-                  padding: "4px",
-                  clipPath:
-                    "polygon(9px 0, 100% 0, calc(100% - 9px) 100%, 0 100%)",
-                }}
-              >
-                <Link href={"/sv"}>
-                  <Button
-                    className={styles.languageBtn}
-                    sx={{
-                      fontSize: 19,
-                      borderRadius: 0,
-                      backgroundColor: locale === "sv" ? "#fff" : "primary.main",
-                      color: locale === "sv" ? "primary.main" : "#ffff",
-                      "&:hover": {
-                        color: theme.palette.primary.main,
-                        backgroundColor: "#fff",
-                      },
-                    }}
-                  >
-                    Sv
-                  </Button>
-                </Link>
-              </div>
-              <div
-                style={{
-                  backgroundColor: theme.palette.secondary.main,
-                  padding: "4px",
-                  clipPath:
-                    "polygon(9px 0, 100% 0, calc(100% - 9px) 100%, 0 100%)",
-                }}
-              >
-                <Link href={"/en"}>
-                  <Button
-                    sx={{
-                      fontSize: 19,
-                      borderRadius: 0,
-                      backgroundColor: locale === "en" ? "#fff" : "primary.main",
-                      color: locale === "en" ? "primary.main" : "#ffff",
-                      "&:hover": {
-                        color: theme.palette.primary.main,
-                        backgroundColor: "#fff",
-                      },
-                    }}
-                    className={styles.languageBtn}
-                  >
-                    En
-                  </Button>
-                </Link>
-              </div>
-            </Box>
-          </Toolbar>
-          <Box
-            sx={{
-              pb: 4,
-              flexGrow: 1,
-              display: { xs: "none", md: "block" },
-              alignItems: "center",
-              fontSize: 35,
-              fontFamily: "halogen",
-              fontWeight: 900,
-              whiteSpace: "nowrap",
-              wordWrap: "break-word",
-            }}
-            style={{ textAlign: "center" }}
+    <Box sx={{ display: 'flex' }}>
+      <AppBar component="nav" position="static" elevation={0}>
+        <Toolbar style={{ height: 240 }}>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            sx={{ mr: 2, display: { sm: 'none' } }}
           >
-            <span style={{ color: "#fffff" }}>Vink </span>
-            <span style={{ color: theme.palette.primary.dark }}>
-              - ja löydä tekemistä
-            </span>
+            <MenuIcon />
+          </IconButton>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ display: { xs: 'none', sm: 'block' } }}
+          >
+            <div
+              style={{
+                clipPath: "polygon(17px 0, 100% 0, calc(100% - 17px) 100%, 0 100%)",
+                backgroundColor: "#fff",
+                padding: "6px 30px 0px 30px",
+                transform: "rotate(-9.28deg)",
+              }}>
+              <a href={"/"}>
+                <Image src={vinkLogo} alt="Vink logo" height={100} width={195} />
+              </a>
+            </div>
+          </Typography>
+          <Box component="div" sx={{
+            flexGrow: 1, display: { xs: 'none', sm: 'block' }, textAlign: "center"
+          }}>
+            {navItems.map((item) => (
+              <Button key={item} sx={{ color: '#193773', fontSize: 15, fontWeight: 900, letterSpacing: 0.5, paddingLeft: 2 }}>
+                {item}
+              </Button>
+            ))}
           </Box>
-        </Container>
+          <LangSelect />
+        </Toolbar>
+        <Box
+          sx={{
+            pb: 4,
+            display: { xs: "none", md: "block" },
+            fontSize: 44,
+            fontFamily: "halogen",
+            fontWeight: 900,
+            whiteSpace: "nowrap",
+            wordWrap: "break-word",
+          }}
+          style={{ textAlign: "center", letterSpacing: 1 }}
+        >
+          <span style={{ color: "#ffff", }}>Vink </span>
+          <span style={{ color: theme.palette.primary.dark }}>
+            - ja löydä tekemistä.
+          </span>
+        </Box>
+        <SearchBar />
       </AppBar>
-    </div>
-  );
-};
+      <Box component="nav">
+        <Drawer
+          container={container}
+          variant="temporary"
+          open={mobileOpen}
+          onClose={handleDrawerToggle}
+          ModalProps={{
+            keepMounted: true, // Better open performance on mobile.
+          }}
+          sx={{
+            display: { xs: 'block', sm: 'none' },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+          }}
+        >
+          {drawer}
+        </Drawer>
+      </Box>
+      <Box component="main" sx={{ p: 3 }}>
+        <Toolbar />
+      </Box>
 
-export default Navbar;
+
+    </Box>
+
+  );
+}
+
+export default withRouter(DrawerAppBar);
