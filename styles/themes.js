@@ -3,7 +3,73 @@ import { createTheme } from "@mui/material/styles";
 export const vinkTheme = createTheme({
     palette: {
         primary: {
-            main: "#F26835", // dark orange
+            main: "#F29544", // dark orange
+            dark: "#193773", // dark blue
+        },
+        secondary: {
+            main: "#193773",
+        },
+    },
+    typography: {
+        fontFamily: "halogen, sans-serif",
+        //card heading
+        h5: {
+            fontWeight: 900,
+            fontSize: 20,
+            fontStyle: "normal",
+            color: "#F16834",
+        },
+        //event content heading
+        h4: {
+            fontWeight: 900,
+            fontSize: 30,
+            letterSpacing: 0.01,
+            color: "#F26835",
+        },
+        //box headings
+        h6: {
+            fontSize: 16,
+            fontWeight: 700,
+            color: "#FFF",
+            letterSpacing: "0.01em",
+        },
+        body2: {
+            //short,long desc, location,
+            fontSize: 15,
+            color: "#000",
+            fontStyle: "normal",
+            letterSpacing: "0.015em",
+            lineHeight: "21px",
+            fontFamily: "forma-djr-micro, sans-serif",
+        },
+        //box content text
+        subtitle1: {
+            color: "#fff",
+            fontWeight: 400,
+            fontSize: 14,
+            fontStyle: "normal",
+            paddingBottom: 25,
+            letterSpacing: "0.015em",
+            fontFamily: "forma-djr-micro, sans-serif",
+        },
+        subtitle2: {
+            //date
+            color: "#193773",
+            fontFamily: "forma-djr-micro, sans-serif",
+            fontSize: 15,
+            fontWeight: 700,
+        },
+        button: {
+            fontWeight: 900,
+            //fontSize: 19,
+        },
+    },
+});
+
+export const vinkThemeWhite = createTheme({
+    palette: {
+        primary: {
+            main: "#ffff", // dark orange
             dark: "#193773", // dark blue
         },
         secondary: {

@@ -3,6 +3,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import {
   whiteLabelTheme,
   vinkTheme,
+  vinkThemeWhite,
   naantaliTheme,
   raisioTheme,
   kaarinaTheme,

@@ -46,13 +46,12 @@ const LangSelect = ({ locale }) => {
     )
 
     return (
-        <Box sx={{ display: 'flex' }}>
-            <Box
-                sx={{
-                    display: { xs: "none", md: "flex" },
-
-                }}
-            >
+        <Box>
+            <Box sx={{
+                flexGrow: 1,
+                display: { xs: "none", md: "flex" },
+                alignItems: "center",
+            }}>
                 <div
                     style={{
                         backgroundColor: theme.palette.secondary.main,

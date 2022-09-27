@@ -1,5 +1,5 @@
 .searchBar {
-    top: 50%;
+    top: 42%;
     left: 50%;
     position: absolute;
     height: 78px;
@@ -39,6 +39,6 @@
     line-height: 70px;
     text-align: center;
     border-radius: 50px;
-    background: #F26835;
+    background: #F29544;
     font-size: 1.2rem;
 }
