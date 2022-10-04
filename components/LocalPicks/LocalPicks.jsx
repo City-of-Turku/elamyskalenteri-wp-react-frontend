@@ -60,7 +60,7 @@ const LocalPicks = ({ props, locale }) => {
       <div style={{ display: "flex", justifyContent: "center", gap: 24, flexDirection: "row" }}>
         {props.column.map((col, index) => (
           <div key={index} style={{ width: 456, textAlign: "center" }}>
-            <h2 style={{ fontSize: 28, fontFamily: "halogen", backgroundColor: "#9AD9C2", color: "#193773", padding: 16, borderRadius: 4, fontWeight: 900, letterSpacing: 1 }}>{col.content.location}</h2>
+            <h2 style={{ fontSize: 28, fontFamily: "halogen", backgroundColor: "#9AD9C2", color: "#193773", padding: 16, fontWeight: 900, letterSpacing: 1 }}>{col.content.location}</h2>
             {props.column.map((item, index) => (
               <div key={index} className="localpicks">
                 <div style={{ position: "relative" }} >
@@ -70,9 +70,9 @@ const LocalPicks = ({ props, locale }) => {
                       sx={{
                         height: 105,
                         width: 165,
-                        borderRadius: 0.5,
-                        boxShadow: 3,
-                        // objectFit: "contain",
+                        borderRadius: 0.8,
+                        boxShadow: 5,
+                        // objectFit: "cover",
                         maxHeight: { xs: 105, md: 105 },
                         maxWidth: { xs: 165, md: 165 },
                       }}
@@ -80,10 +80,17 @@ const LocalPicks = ({ props, locale }) => {
                       alt="Avatar"
                     />
                   )}
+                    <div style={{ position: "absolute", left: "30%", bottom: "-43%", transform: "translate(-50%, -50%)", width: 0, height: 0, borderBottom: "100px solid white", borderRight: "100px solid transparent"}}></div>
+                    <Typography sx={{ position: "absolute", left: "14%", bottom: 0, transform: "translate(-50%, -50%)", fontSize: 16, fontWeight: 700, fontStyle: 'normal', letterSpacing: 2, color: '#193773', lineHeight: 2, marginBottom:"10px" }}>
+                        {dayjs(turku.start_time).format("DD")}
+                    </Typography>
+                    <Typography sx={{ position: "absolute", left: "15%", bottom: 0, transform: "translate(-50%, -50%)", fontSize: 12, fontWeight: 500, fontStyle: 'normal', letterSpacing: 2, color: '#193773', lineHeight: 2 }}>
+                        {dayjs(turku.start_time).format("MMM")}
+                    </Typography>
                 </div>
                 <div style={{ textAlign: "left", paddingLeft: 25 }}>
-                  <Typography variant="subtitle2" sx={{ fontSize: 14 }}>{dayjs(turku.start_time).format("DD.MM.YYYY | HH:mm")} - {dayjs(turku.end_time).format("HH:mm")}</Typography>
-                  <h3 style={{ fontSize: 18, color: "#F26835", fontFamily: "halogen" }} key={item.id}>{turku.name.fi}</h3>
+                  <Typography sx={{ fontSize: 14, fontFamily: 'Forma DJR Micro', fontWeight: 500, fontStyle: 'normal', letterSpacing: 2, color: '#193773', lineHeight: 2 }}>{dayjs(turku.start_time).format("DD.MM.YYYY | HH:mm")} - {dayjs(turku.end_time).format("HH:mm")}</Typography>
+                  <Typography style={{ fontSize: 18, fontWeight: 900, color: "#F26835", fontFamily: "halogen" }} key={item.id}>{turku.name.fi}</Typography>
                 </div>
               </div>
             ))}
