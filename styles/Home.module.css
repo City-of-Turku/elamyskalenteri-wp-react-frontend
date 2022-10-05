@@ -4,7 +4,6 @@
 }
 
 .header {
-  background-color: #F26835;
   height: 300px;
   width: 100%;
 }
@@ -26,16 +25,16 @@
   padding: 0px 0px 15px 0px;
 }
 
-.customizeToolbar:after {
-  /* background: linear-gradient(45deg, #fff 16px, transparent 0), linear-gradient(45deg, #fff 16px, transparent 0); */
-  background-position: left-bottom;
-  background-repeat: repeat-x;
-  background-size: 25px 25px;
-  content: " ";
-  display: block;
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
-  width: 100%;
-  height: 40px;
+.topPicksGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 28.5rem);
+  grid-template-rows: repeat(2, 19.25rem);
+  grid-gap: 1.5rem
+}
+
+@media (max-width: 600px) {
+  .topPicksGrid {
+    grid-template-columns: repeat(1, 28.5rem);
+    grid-template-rows: repeat(6, 19.25rem);
+  }
 }

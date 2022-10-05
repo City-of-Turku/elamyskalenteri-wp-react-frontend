@@ -1,11 +1,12 @@
 import Link from "next/link";
+import styles from '../../styles/Home.module.css'
 
 const TopPicks = ({ props, locale }) => {
 
   console.log(props)
   return (
     <div style={{ display: "flex", justifyContent: "center", margin: "80px 0" }}>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 456px)", gridTemplateRows: "repeat(2, 308px)", gap: 24 }}>
+      <div className={styles.topPicksGrid} >
         {props.grid_items.map((item, index) => (
           <Link key={index} href={item.url[locale]}>
             <div style={{

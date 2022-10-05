@@ -1,5 +1,5 @@
-
-import vinkLogo from "../../public/svg/vinkLogo1.svg";
+import vinkLogoWhite from "../../public/svg/logo_white.svg";
+import vinkLogoOrange from "../../public/svg/logo_orange.svg";
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -15,19 +15,19 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { withRouter } from "next/router";
 import ListItemIcon from '@mui/material/ListItemIcon';
-import { useTheme } from "@mui/material";
 import Image from "next/image";
 import LangSelect from "./langSelect";
 import HomeIcon from '@mui/icons-material/Home';
 import EventIcon from '@mui/icons-material/Event';
 import SportsFootballIcon from '@mui/icons-material/SportsFootball';
 import SchoolIcon from '@mui/icons-material/School';
-import SearchBar from './SearchBar/SearchBar';
+import SearchBar from './SearchBar';
+import styles from '../../styles/Home.module.css'
+import Link from 'next/link'
 
 const drawerWidth = 240;
-const navItems = ['Tapahtumat', 'Harrastukset', 'Koulutukset'];
 
-function DrawerAppBar(props) {
+const Navbar = (props) => {
 
   const { window, history } = props;
 
@@ -52,8 +52,6 @@ function DrawerAppBar(props) {
   ]
 
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const theme = useTheme();
-  // const classes = useStyles();
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -61,16 +59,16 @@ function DrawerAppBar(props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Box sx={{ my: 4 }}>
-        <a href={"/"}><Image src={vinkLogo} alt="Vink logo" height={50} width={150} /></a>
+        <a href={"/"}><Image src={vinkLogoOrange} alt="Vink logo" height={50} width={150} /></a>
       </Box>
       <Divider />
       <List>
-        {mobileNavItems.map((item, index) => {
+        {mobileNavItems.map((item) => {
           const { text, icon } = item;
           return (
             <ListItem button key={text}>
               {icon && <ListItemIcon>{icon}</ListItemIcon>}
-              <ListItemText primary={text} />
+              <Link href="/"><ListItemText primary={text} /></Link>
             </ListItem>
           )
         })}
@@ -82,62 +80,61 @@ function DrawerAppBar(props) {
 
   return (
     <Box sx={{ display: 'flex' }}>
-      <AppBar component="nav" position="static" elevation={0}>
-        <Toolbar style={{ height: 240 }}>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ display: { xs: 'none', sm: 'block' } }}
-          >
-            <div
-              style={{
-                clipPath: "polygon(17px 0, 100% 0, calc(100% - 17px) 100%, 0 100%)",
-                backgroundColor: "#fff",
-                padding: "6px 30px 0px 30px",
-                transform: "rotate(-9.28deg)",
-              }}>
-              <a href={"/"}>
-                <Image src={vinkLogo} alt="Vink logo" height={100} width={195} />
-              </a>
-            </div>
-          </Typography>
-          <Box component="div" sx={{
-            flexGrow: 1, display: { xs: 'none', sm: 'block' }, textAlign: "center"
-          }}>
-            {navItems.map((item) => (
-              <Button key={item} sx={{ color: '#193773', fontSize: 15, fontWeight: 900, letterSpacing: 0.5, paddingLeft: 2 }}>
-                {item}
-              </Button>
-            ))}
+      <AppBar className={styles.header} component="nav" position="static" elevation={0}>
+        <Toolbar>
+          <Box sx={{ flexGrow: 1, display: { xs: 'block', sm: 'block' } }}>
+            <Box sx={{ display: 'flex', justifyContent: 'flex-end', p: 2 }}> <LangSelect /></Box>
+            <Box sx={{ justifyContent: { xs: 'center' }, display: { xs: 'flex', sm: 'flex' }, alignItems: 'center' }}>
+              <IconButton
+                color="inherit"
+                fontSize="large"
+                aria-label="open drawer"
+                edge="start"
+                onClick={handleDrawerToggle}
+                sx={{ display: { xs: 'flex', sm: 'none' } }}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Link href="/">
+                <Image src={vinkLogoWhite} alt="Vink logo" height={100} width={195} />
+              </Link>
+              <Typography sx={{ fontSize: 44, color: '#193773', fontFamily: 'halogen', fontWeight: 900, letterSpacing: 1, display: { xs: 'none', sm: 'none', md: 'flex', lg: 'flex', xl: 'flex' } }}>
+                - ja löydä tekemistä.
+              </Typography>
+            </Box>
+            <Box component="div" sx={{
+              justifyContent: "center", display: { xs: 'none', sm: 'flex', textDecorationLine: 'underline', color: '#193773' }
+            }}>
+              <Link href={"/events"}>
+                <Button sx={{
+                  color: '#193773', fontSize: 18, fontWeight: 900, letterSpacing: 0.5, '&:hover': {
+                    backgroundColor: '#fff',
+                  },
+                }}>
+                  tapahtumat
+                </Button>
+              </Link>
+              <Link href={"/hobbies"}>
+                <Button sx={{
+                  color: '#193773', fontSize: 18, fontWeight: 900, letterSpacing: 0.5, '&:hover': {
+                    backgroundColor: '#fff',
+                  },
+                }}>
+                  harrastukset
+                </Button>
+              </Link>
+              <Link href={"/educations"}>
+                <Button sx={{
+                  color: '#193773', fontSize: 18, fontWeight: 900, letterSpacing: 0.5, '&:hover': {
+                    backgroundColor: '#fff',
+                  },
+                }}>
+                  koulutukset
+                </Button>
+              </Link>
+            </Box>
           </Box>
-          <LangSelect />
         </Toolbar>
-        <Box
-          sx={{
-            pb: 4,
-            display: { xs: "none", md: "block" },
-            fontSize: 44,
-            fontFamily: "halogen",
-            fontWeight: 900,
-            whiteSpace: "nowrap",
-            wordWrap: "break-word",
-          }}
-          style={{ textAlign: "center", letterSpacing: 1 }}
-        >
-          <span style={{ color: "#ffff", }}>Vink </span>
-          <span style={{ color: theme.palette.primary.dark }}>
-            - ja löydä tekemistä.
-          </span>
-        </Box>
         <SearchBar />
       </AppBar>
       <Box component="nav">
@@ -149,22 +146,15 @@ function DrawerAppBar(props) {
           ModalProps={{
             keepMounted: true, // Better open performance on mobile.
           }}
-          sx={{
-            display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-          }}
-        >
+          sx={{ display: { xs: 'block', sm: 'none' }, '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth }, }}>
           {drawer}
         </Drawer>
       </Box>
-      <Box component="main" sx={{ p: 3 }}>
+      <Box component="main" sx={{ p: 5 }}>
         <Toolbar />
       </Box>
-
-
-    </Box>
-
+    </Box >
   );
 }
 
-export default withRouter(DrawerAppBar);
+export default withRouter(Navbar);

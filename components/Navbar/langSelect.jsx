@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import { useTheme } from "@mui/material";
 import styles from "../../styles/Home.module.css";
@@ -7,52 +7,37 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import FormControl from '@mui/material/FormControl';
 
-const langs = ['FI', 'SV', 'EN'];
 const LangSelect = ({ locale }) => {
-    const [open, setOpen] = React.useState(false);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
-
-    const handleChange = (event) => {
-        locale.changeLanguage(event.target.value);
-    };
-
     const theme = useTheme();
 
+    const [lang, setLang] = useState()
+    const handleChange = (event) => {
+        setLang(event.target.value)
+    }
+
     const languageBtnMobile = (
-        <Box sx={{ flexGrow: 1, minWidth: 120, display: { sm: 'none' } }}>
-            <Button className={styles.languageMobile}
-                onClick={() => {
-                    setOpen(!open);
-                }}>
+        <div>
+            <FormControl variant="standard" sx={{ m: 1, minWidth: 50, display: { xs: 'flex', md: 'none' } }}>
                 <Select
-                    style={{ outline: 'none' }}
-                    onClick={() => setOpen(!open)}
-                    // value={language}
-                    onChange={handleChange}
-                    open={open}
-                    defaultValue={locale}
-                >
-                    {langs.map((lang, index) => {
-                        return (
-                            <MenuItem key={index} value={lang}>
-                                {lang}
-                            </MenuItem>
-                        );
-                    })}
+                    value={lang}
+                    onChange={handleChange}>
+                    <MenuItem value="FI"><Link href={"/fi"}>FI</Link></MenuItem>
+                    <MenuItem value="SV"><Link href={"/sv"}>SV</Link></MenuItem>
+                    <MenuItem value="EN"><Link href={"/en"}>EN</Link></MenuItem>
                 </Select>
-            </Button>
-        </Box>
+            </FormControl>
+        </div>
     )
 
     return (
-        <Box sx={{ display: 'flex' }}>
-            <Box
-                sx={{
-                    display: { xs: "none", md: "flex" },
-
-                }}
-            >
+        <Box>
+            <Box sx={{
+                flexGrow: 1,
+                display: { xs: "none", md: "flex" },
+                alignItems: "center",
+            }}>
                 <div
                     style={{
                         backgroundColor: theme.palette.secondary.main,
@@ -66,7 +51,7 @@ const LangSelect = ({ locale }) => {
                             className={styles.languageBtn}
                             sx={{
                                 borderRadius: 0,
-                                backgroundColor: locale === "fi" ? "#fff" : "primary.main",
+                                backgroundColor: locale === "fi" ? "#fff" : theme.palette.primary.main,
                                 color: locale === "fi" ? "primary.dark" : "primary.dark",
                                 "&:hover": {
                                     color: theme.palette.primary.dark,
@@ -91,7 +76,7 @@ const LangSelect = ({ locale }) => {
                             className={styles.languageBtn}
                             sx={{
                                 borderRadius: 0,
-                                backgroundColor: locale === "sv" ? "#fff" : "primary.main",
+                                backgroundColor: locale === "sv" ? "#fff" : theme.palette.primary.main,
                                 color: locale === "sv" ? "primary.dark" : "primary.dark",
                                 "&:hover": {
                                     color: theme.palette.primary.dark,
@@ -115,7 +100,7 @@ const LangSelect = ({ locale }) => {
                         <Button
                             sx={{
                                 borderRadius: 0,
-                                backgroundColor: locale === "en" ? "#fff" : "primary.main",
+                                backgroundColor: locale === "en" ? "#fff" : theme.palette.primary.main,
                                 color: locale === "en" ? "primary.dark" : "primary.dark",
                                 "&:hover": {
                                     color: theme.palette.primary.dark,
