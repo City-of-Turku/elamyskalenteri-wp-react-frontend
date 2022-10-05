@@ -13,7 +13,6 @@ const LangSelect = ({ locale }) => {
     const theme = useTheme();
 
     const [lang, setLang] = useState()
-    console.log('lang', { lang })
     const handleChange = (event) => {
         setLang(event.target.value)
     }
@@ -23,8 +22,7 @@ const LangSelect = ({ locale }) => {
             <FormControl variant="standard" sx={{ m: 1, minWidth: 50, display: { xs: 'flex', md: 'none' } }}>
                 <Select
                     value={lang}
-                    onChange={handleChange}
-                >
+                    onChange={handleChange}>
                     <MenuItem value="FI"><Link href={"/fi"}>FI</Link></MenuItem>
                     <MenuItem value="SV"><Link href={"/sv"}>SV</Link></MenuItem>
                     <MenuItem value="EN"><Link href={"/en"}>EN</Link></MenuItem>
@@ -53,7 +51,7 @@ const LangSelect = ({ locale }) => {
                             className={styles.languageBtn}
                             sx={{
                                 borderRadius: 0,
-                                backgroundColor: locale === "fi" ? "#fff" : "primary.main",
+                                backgroundColor: locale === "fi" ? "#fff" : theme.palette.primary.main,
                                 color: locale === "fi" ? "primary.dark" : "primary.dark",
                                 "&:hover": {
                                     color: theme.palette.primary.dark,
@@ -78,7 +76,7 @@ const LangSelect = ({ locale }) => {
                             className={styles.languageBtn}
                             sx={{
                                 borderRadius: 0,
-                                backgroundColor: locale === "sv" ? "#fff" : "primary.main",
+                                backgroundColor: locale === "sv" ? "#fff" : theme.palette.primary.main,
                                 color: locale === "sv" ? "primary.dark" : "primary.dark",
                                 "&:hover": {
                                     color: theme.palette.primary.dark,
@@ -102,7 +100,7 @@ const LangSelect = ({ locale }) => {
                         <Button
                             sx={{
                                 borderRadius: 0,
-                                backgroundColor: locale === "en" ? "#fff" : "primary.main",
+                                backgroundColor: locale === "en" ? "#fff" : theme.palette.primary.main,
                                 color: locale === "en" ? "primary.dark" : "primary.dark",
                                 "&:hover": {
                                     color: theme.palette.primary.dark,

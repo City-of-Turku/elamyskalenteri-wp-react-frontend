@@ -26,7 +26,8 @@ const SearchBar = () => {
         width: "56px",
         height: "56px",
         right: "7px",
-        top: "15%"
+        top: "15%",
+        fontSize: 32
     }));
 
     const StyledInputBase = styled(InputBase)(() => ({
@@ -44,10 +45,9 @@ const SearchBar = () => {
         },
     }));
 
-    const ref = useRef(null);
+    const calendarRef = useRef()
     const handleClick = () => {
-        ref.current?.scrollIntoView({ behavior: 'smooth' })
-        console.log('ref')
+        calendarRef.current?.scrollIntoView({ behavior: 'smooth' })
     }
 
     return (

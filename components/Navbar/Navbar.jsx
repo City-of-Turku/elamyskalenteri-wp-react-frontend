@@ -103,20 +103,32 @@ const Navbar = (props) => {
               </Typography>
             </Box>
             <Box component="div" sx={{
-              justifyContent: "center", display: { xs: 'none', sm: 'flex', textDecorationLine: 'underline', color: '#193773', }
+              justifyContent: "center", display: { xs: 'none', sm: 'flex', textDecorationLine: 'underline', color: '#193773' }
             }}>
               <Link href={"/events"}>
-                <Button sx={{ color: '#193773', fontSize: 18, fontWeight: 900, letterSpacing: 0.5 }}>
+                <Button sx={{
+                  color: '#193773', fontSize: 18, fontWeight: 900, letterSpacing: 0.5, '&:hover': {
+                    backgroundColor: '#fff',
+                  },
+                }}>
                   tapahtumat
                 </Button>
               </Link>
               <Link href={"/hobbies"}>
-                <Button sx={{ color: '#193773', fontSize: 18, fontWeight: 900, letterSpacing: 0.5 }}>
+                <Button sx={{
+                  color: '#193773', fontSize: 18, fontWeight: 900, letterSpacing: 0.5, '&:hover': {
+                    backgroundColor: '#fff',
+                  },
+                }}>
                   harrastukset
                 </Button>
               </Link>
-              <Link href={"/hobbies"}>
-                <Button sx={{ color: '#193773', fontSize: 18, fontWeight: 900, letterSpacing: 0.5 }}>
+              <Link href={"/educations"}>
+                <Button sx={{
+                  color: '#193773', fontSize: 18, fontWeight: 900, letterSpacing: 0.5, '&:hover': {
+                    backgroundColor: '#fff',
+                  },
+                }}>
                   koulutukset
                 </Button>
               </Link>
