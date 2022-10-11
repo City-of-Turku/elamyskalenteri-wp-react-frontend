@@ -26,7 +26,17 @@ export const resolvePath = (path, locale) => {
   return pathToReturn || ""
 }
 
+export const resolveActive = (path, navHref) => {
+  let active = false
+  if (path.includes(navHref)) {
+    active = true
+  }
+  return active
+}
+
 // Add any relevant paths here
 const paths = [
- // { fi: , en: , sv: }
+  { fi: "tapahtumat/", en: "events/", sv: "evenemang/" },
+  { fi: "harrastukset/", en: "hobbies/", sv: "hobbyer/" },
+  { fi: "koulutukset/", en: "educations/", sv: "träning/" },
 ]

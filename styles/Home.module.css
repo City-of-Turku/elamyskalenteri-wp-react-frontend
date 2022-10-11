@@ -8,18 +8,6 @@
   width: 100%;
 }
 
-.languageBtn {
-  line-height: 19px;
-  font-size: 18px;
-  clip-path: polygon(7px 0, 100% 0, calc(100% - 7px) 100%, 0 100%);
-}
-
-.languageBtnText {
-  font-weight: 900 !important;
-  font-size: 14px;
-  text-transform: capitalize;
-}
-
 .customizeToolbar {
   position: relative;
   padding: 0px 0px 15px 0px;

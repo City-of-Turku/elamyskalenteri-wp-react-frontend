@@ -1,0 +1,64 @@
+.container {
+    display: flex;
+    height: 70px;
+}
+
+.link {
+    display: block;
+    margin: 0 25px;
+    padding: 10px;
+    font-size: 19px;
+    font-weight: 900;
+    color: #193773;
+    transition: 0.5s;
+    border-radius: 5px;
+}
+
+
+.link:after {
+    position: absolute;
+    content: '';
+    display: block;
+    height: 3px;
+    width: 0;
+    bottom: -8px;
+    background-color: transparent;
+}
+
+.link:hover {
+    background-color: #fff;
+
+}
+
+.activeLink {
+    background-color: #fff;
+}
+
+.activeLink:after {
+    color: black
+}
+
+.linkContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+@media only screen and (max-width: 1024px) {
+    .container {
+        padding: 0 24px;
+    }
+
+
+    .linkContainer {
+        display: none;
+    }
+
+    .linksOpen {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+}
