@@ -14,8 +14,11 @@
     border-radius: 5px;
 }
 
+.link:hover {
+    background-color: #fff;
+}
 
-.link:after {
+/* .link:after {
     position: absolute;
     content: '';
     display: block;
@@ -25,18 +28,13 @@
     background-color: transparent;
 }
 
-.link:hover {
-    background-color: #fff;
-
-}
-
 .activeLink {
     background-color: #fff;
 }
 
 .activeLink:after {
     color: black
-}
+} */
 
 .linkContainer {
     display: flex;
