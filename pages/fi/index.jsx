@@ -10,7 +10,7 @@ import styles from "../../styles/Home.module.css";
 import Typography from "@mui/material/Typography";
 
 
-const Home = ({ elements, footerProps }) => {
+const Home = ({ elements }) => {
 
   const theme = useTheme();
 
@@ -19,8 +19,8 @@ const Home = ({ elements, footerProps }) => {
   };
 
   return (
-    <Layout locale={"fi"} footerProps={footerProps}>
-      <IndexPage locale={"fi"} elements={elements} footerProps={footerProps} />
+    <Layout locale={"fi"}>
+      <IndexPage locale={"fi"} elements={elements} />
 
       <Box style={{ backgroundColor: "#f2ca99", color: "#ffffff", padding: 12 }}>
         <div style={{ display: "flex", justifyContent: "center" }}>
