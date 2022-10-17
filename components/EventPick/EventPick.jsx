@@ -1,3 +1,4 @@
+import { Gradient } from "@mui/icons-material";
 import Link from "next/link";
 
 const EventPick = ({ props, locale }) => {
@@ -7,11 +8,11 @@ const EventPick = ({ props, locale }) => {
     return (
         <div style={{ display: "flex", justifyContent: "center", margin: "80px 0" }}>
             <Link href={props.event_item.url[locale]}>
-                <div style={{ position: "relative", width: "100%", maxWidth: "900px", height: "100%", minHeight: "320px" }}>
-                    <img src={props.event_item.image} width={700} height={500} style={{ width: "100%", display: "block" }} />
-                    <div style={{ position: "absolute", textAlign: "center", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}>
-                        <h2 style={{ fontSize: 30 }}>{props.event_item.title[locale]}</h2>
-                        <p style={{ fontFamily: "Forma DJR Micro", fontSize: 20, fontWeight: 300 }}>{props.event_item.short_desc[locale]}</p>
+                <div style={{ position: "relative", width: "100%", maxWidth: "800px", height: "100%", minHeight: "320px" }}>
+                    <img src={props.event_item.image} style={{ width: "100%", display: "block", borderRadius: 2 }} alt="kuvateksti" />
+                    <div style={{ position: "absolute", textAlign: "left", bottom: 1, padding: 12, color: props.event_item.text_color, letterSpacing: 0.2, background: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0,0,0,0.5))" }}>
+                        <h2 style={{ fontSize: 35, fontFamily: 'Halogen', fontWeight: 900, paddingBottom: 10 }}>{props.event_item.title[locale]}</h2>
+                        <p style={{ fontFamily: "Forma DJR Micro", fontSize: 21, fontWeight: 300 }}>{props.event_item.short_desc[locale]}</p>
                     </div>
                 </div>
             </Link>
