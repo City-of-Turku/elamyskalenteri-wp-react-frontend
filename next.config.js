@@ -9,9 +9,20 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   staticPageGenerationTimeout: 180,
-  images:  {
-    domains: ['linkedevents-api.turku.fi', 'testilinkedevents-api.turku.fi' ],
+  images: {
+    domains: ['linkedevents-api.turku.fi', 'testilinkedevents-api.turku.fi'],
   },
+
+
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/fi",
+        permanent: true,
+      }
+    ]
+  }
 }
 
 module.exports = nextConfig

@@ -7,131 +7,83 @@ import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import { withRouter } from "next/router";
-import ListItemIcon from '@mui/material/ListItemIcon';
 import Image from "next/image";
 import LangSelect from "./langSelect";
-import HomeIcon from '@mui/icons-material/Home';
-import EventIcon from '@mui/icons-material/Event';
-import SportsFootballIcon from '@mui/icons-material/SportsFootball';
-import SchoolIcon from '@mui/icons-material/School';
 import SearchBar from './SearchBar';
-import styles from '../../styles/Home.module.css'
 import Link from 'next/link'
+import PropTypes from "prop-types"
+import LanguageSelector from "../LanguageSelector/LanguageSelector"
+import styles from "./Navbar.module.css"
+import FinnishLinks from "./FinnishLinks";
+import SwedishLinks from "./SwedishLinks";
+import EnglishLinks from "./EnglishLinks";
 
 const drawerWidth = 240;
 
-const Navbar = (props) => {
-
-  const { window, history } = props;
-
-  const mobileNavItems = [
-    {
-      text: "Etusivu",
-      icon: <HomeIcon />,
-      onClick: () => history.push('/'),
-    },
-    {
-      text: "Tapahtumat",
-      icon: <EventIcon />
-    },
-    {
-      text: "Harrastukset",
-      icon: <SportsFootballIcon />
-    },
-    {
-      text: "Koulutukset",
-      icon: <SchoolIcon />
-    }
-  ]
+const Navbar = ({ locale }) => {
 
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const handleDrawerToggle = () => {
+
+  const toggleMenu = () => {
     setMobileOpen(!mobileOpen);
-  };
+  }
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Box sx={{ my: 4 }}>
-        <a href={"/"}><Image src={vinkLogoOrange} alt="Vink logo" height={50} width={150} /></a>
+    <Box onClick={toggleMenu} sx={{ textAlign: 'center' }}>
+      <Box sx={{ my: 4, cursor: "pointer" }}>
+        <Link href={"/"}><Image src={vinkLogoOrange} alt="Vink logo" height={50} width={150} /></Link>
       </Box>
       <Divider />
       <List>
-        {mobileNavItems.map((item) => {
-          const { text, icon } = item;
-          return (
-            <ListItem button key={text}>
-              {icon && <ListItemIcon>{icon}</ListItemIcon>}
-              <Link href="/"><ListItemText primary={text} /></Link>
-            </ListItem>
-          )
-        })}
+        {locale === "fi" && <FinnishLinks handleClick={toggleMenu} />}
+        {locale === "sv" && <SwedishLinks handleClick={toggleMenu} />}
+        {locale === "en" && <EnglishLinks handleClick={toggleMenu} />}
       </List>
     </Box>
   );
-
-  const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
     <Box sx={{ display: 'flex' }}>
       <AppBar className={styles.header} component="nav" position="static" elevation={0}>
         <Toolbar>
           <Box sx={{ flexGrow: 1, display: { xs: 'block', sm: 'block' } }}>
-            <Box sx={{ display: 'flex', justifyContent: 'flex-end', p: 2 }}> <LangSelect /></Box>
+            <Box sx={{ display: 'flex', justifyContent: 'flex-end', p: 2 }}>
+              <div className={styles.linkContainer}>
+                <LanguageSelector />
+              </div>
+              <LangSelect />
+            </Box>
             <Box sx={{ justifyContent: { xs: 'center' }, display: { xs: 'flex', sm: 'flex' }, alignItems: 'center' }}>
               <IconButton
-                color="inherit"
-                fontSize="large"
                 aria-label="open drawer"
                 edge="start"
-                onClick={handleDrawerToggle}
-                sx={{ display: { xs: 'flex', sm: 'none' } }}
+                onClick={toggleMenu}
+                sx={{ color: "#fff", display: { xs: 'flex', sm: 'none' } }}
               >
                 <MenuIcon />
               </IconButton>
-              <Link href="/">
-                <Image src={vinkLogoWhite} alt="Vink logo" height={100} width={195} />
-              </Link>
+              <Box sx={{ cursor: "pointer" }}>
+                <Link href={"#"}>
+                  <Image src={vinkLogoWhite} alt="Vink logo" height={100} width={195} />
+                </Link>
+              </Box>
               <Typography sx={{ fontSize: 44, color: '#193773', fontFamily: 'halogen', fontWeight: 900, letterSpacing: 1, display: { xs: 'none', sm: 'none', md: 'flex', lg: 'flex', xl: 'flex' } }}>
                 - ja löydä tekemistä.
               </Typography>
             </Box>
             <Box component="div" sx={{
-              justifyContent: "center", display: { xs: 'none', sm: 'flex', textDecorationLine: 'underline', color: '#193773' }
+              justifyContent: "center", textDecorationLine: 'underline', letterSpacing: 1, fontFamily: 'halogen', display: { xs: 'none', sm: 'none', md: 'flex', lg: 'flex', xl: 'flex' }
             }}>
-              <Link href={"/events"}>
-                <Button sx={{
-                  color: '#193773', fontSize: 18, fontWeight: 900, letterSpacing: 0.5, '&:hover': {
-                    backgroundColor: '#fff',
-                  },
-                }}>
-                  tapahtumat
-                </Button>
-              </Link>
-              <Link href={"/hobbies"}>
-                <Button sx={{
-                  color: '#193773', fontSize: 18, fontWeight: 900, letterSpacing: 0.5, '&:hover': {
-                    backgroundColor: '#fff',
-                  },
-                }}>
-                  harrastukset
-                </Button>
-              </Link>
-              <Link href={"/educations"}>
-                <Button sx={{
-                  color: '#193773', fontSize: 18, fontWeight: 900, letterSpacing: 0.5, '&:hover': {
-                    backgroundColor: '#fff',
-                  },
-                }}>
-                  koulutukset
-                </Button>
-              </Link>
+              <div className={styles.container}>
+                <div className={styles.linkContainer}>
+                  {locale === "fi" && <FinnishLinks handleClick={toggleMenu} />}
+                  {locale === "sv" && <SwedishLinks handleClick={toggleMenu} />}
+                  {locale === "en" && <EnglishLinks handleClick={toggleMenu} />}
+                </div>
+              </div>
             </Box>
           </Box>
         </Toolbar>
@@ -139,10 +91,9 @@ const Navbar = (props) => {
       </AppBar>
       <Box component="nav">
         <Drawer
-          container={container}
           variant="temporary"
           open={mobileOpen}
-          onClose={handleDrawerToggle}
+          onClose={toggleMenu}
           ModalProps={{
             keepMounted: true, // Better open performance on mobile.
           }}
@@ -150,11 +101,12 @@ const Navbar = (props) => {
           {drawer}
         </Drawer>
       </Box>
-      <Box component="main" sx={{ p: 5 }}>
-        <Toolbar />
-      </Box>
     </Box >
   );
 }
 
-export default withRouter(Navbar);
+export default Navbar
+
+Navbar.propTypes = {
+  locale: PropTypes.string,
+}

@@ -3,7 +3,6 @@ import styles from '../../styles/Home.module.css'
 
 const TopPicks = ({ props, locale }) => {
 
-  console.log(props)
   return (
     <div style={{ display: "flex", justifyContent: "center", margin: "80px 0" }}>
       <div className={styles.topPicksGrid} >

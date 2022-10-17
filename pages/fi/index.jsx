@@ -19,7 +19,7 @@ const Home = ({ elements }) => {
   };
 
   return (
-    <Layout locale={"fi"} >
+    <Layout locale={"fi"}>
       <IndexPage locale={"fi"} elements={elements} />
 
       <Box style={{ backgroundColor: "#f2ca99", color: "#ffffff", padding: 12 }}>

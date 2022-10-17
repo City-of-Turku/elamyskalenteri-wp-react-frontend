@@ -1,11 +1,10 @@
-import Layout from "../components/Layout/Layout";
-import IndexPage from "../pageComponents/Index";
-import Link from 'next/link'
+import Layout from "../../components/Layout/Layout";
+import Events from "../../pageComponents/Events";
 
-const Events = ({ locale, elements }) => {
+const EventsPage = ({ elements }) => {
     return (
         <Layout locale={"fi"}>
-            <IndexPage locale={"fi"} elements={elements} />
+            <Events locale={"fi"} elements={elements} />
         </Layout>
     )
 }
@@ -24,4 +23,4 @@ export const getStaticProps = async () => {
 
 }
 
-export default Events
+export default EventsPage
