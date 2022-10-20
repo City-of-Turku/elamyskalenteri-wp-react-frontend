@@ -22,6 +22,7 @@ const TopPicks = ({ props, locale }) => {
               justifyContent: item.label_position
             }}>
               <h2 style={{ fontFamily: "Forma DJR Micro", fontSize: 30, fontWeight: 500, letterSpacing: 2, backgroundColor: item.text_background_color, textAlign: item.label_position, color: item.text_color, padding: 10 }}>{item?.title?.[locale]}</h2>
+              <p style={{ fontFamily: "Forma DJR Micro", fontSize: 22, letterSpacing: 2, backgroundColor: item.text_background_color, textAlign: item.label_position, color: item.text_color, padding: 10 }}>{item?.desc?.[locale]}</p>
             </div>
           </Link>
         ))}
