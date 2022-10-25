@@ -1,17 +1,17 @@
 import { useTheme } from "@mui/material";
 import Script from 'next/script'
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 const Calendar = ({ props, locale }) => {
   const theme = useTheme();
 
-
-  const options = JSON.parse(props.options)
+  const options = !!props.options ? JSON.parse(props.options) : {}
   const calendarProps = {}
 
   for (const [key, value] of Object.entries(options)) {
     calendarProps[`data-${key}`] = value
   }
+
 
   console.log('calendarProps', calendarProps)
 
