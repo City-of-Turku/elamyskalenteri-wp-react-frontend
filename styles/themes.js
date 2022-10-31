@@ -12,12 +12,17 @@ export const vinkTheme = createTheme({
     },
     typography: {
         fontFamily: "halogen, sans-serif",
+        h3: {
+            fontSize: 35,
+            letterSpacing: 4,
+            fontWeight: 900
+        },
         //card heading
         h5: {
             fontWeight: 900,
             fontSize: 20,
             fontStyle: "normal",
-            color: "#F16834",
+            // color: "#F16834",
         },
         //event content heading
         h4: {
@@ -36,11 +41,11 @@ export const vinkTheme = createTheme({
         body2: {
             //short,long desc, location,
             fontSize: 15,
-            color: "#000",
+            // color: "#000",
             fontStyle: "normal",
             letterSpacing: "0.015em",
             lineHeight: "21px",
-            fontFamily: "forma-djr-micro, sans-serif",
+            fontFamily: "Forma DJR Micro",
         },
         //box content text
         subtitle1: {
@@ -54,8 +59,8 @@ export const vinkTheme = createTheme({
         },
         subtitle2: {
             //date
-            color: "#193773",
-            fontFamily: "forma-djr-micro, sans-serif",
+            // color: "#193773",
+            fontFamily: "Forma DJR Micro",
             fontSize: 15,
             fontWeight: 700,
         },
@@ -203,6 +208,11 @@ export const naantaliTheme = createTheme({
     },
     typography: {
         fontFamily: "arial, sans-serif",
+        h3: {
+            fontSize: 35,
+            letterSpacing: 4,
+            fontWeight: 500
+        },
         h6: {
             fontSize: 16,
             fontWeight: 900,
@@ -210,7 +220,7 @@ export const naantaliTheme = createTheme({
             letterSpacing: "0.01em",
         },
         h5: {
-            color: "#1D6052",
+            // color: "#1D6052",
             fontWeight: 700,
         },
         h4: {
@@ -230,13 +240,13 @@ export const naantaliTheme = createTheme({
         },
         subtitle2: {
             //date
-            color: "#000",
+            // color: "#000",
             fontWeight: 700,
         },
         body2: {
             //short,long desc, location
             fontSize: 15,
-            color: "#000",
+            // color: "#000",
             fontStyle: "normal",
             fontWeight: 400,
             letterSpacing: "0.015em",
