@@ -1,19 +1,27 @@
 import { useTheme } from "@mui/material";
 import Script from 'next/script'
 import React from 'react';
+import { DOMParser } from '@xmldom/xmldom'
 
 const Calendar = ({ props, locale }) => {
   const theme = useTheme();
-
-  const options = !!props.options ? JSON.parse(props.options) : {}
+  
+  const embedCode = props.embed_code;
   const calendarProps = {}
 
-  for (const [key, value] of Object.entries(options)) {
-    calendarProps[`data-${key}`] = value
-  }
+  calendarProps["data-type"] = "normal";
 
-
-  console.log('calendarProps', calendarProps)
+  try {
+    const html = new DOMParser().parseFromString(embedCode, 'text/html');
+    const embedEl = html.getElementsByClassName("event-calendar-embed")[0];
+    const attrs = embedEl.attributes
+    for (let i=0; i < attrs.length; i++) {
+      const attr = attrs.item(i)
+      if (attr.name.startsWith("data-")) {
+        calendarProps[attr.name] = attr.value
+      }
+    }
+  }  catch (error) { }
 
   return (
     <>
@@ -23,9 +31,8 @@ const Calendar = ({ props, locale }) => {
           React.createElement(
             "div",
             {
-              ...options,
+              ...calendarProps,
               className: "event-calendar-embed",
-              "data-type": "normal"
             }
           )
         }
