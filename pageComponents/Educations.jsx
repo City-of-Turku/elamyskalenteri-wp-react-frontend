@@ -6,6 +6,7 @@ const Educations = ({ locale, elements }) => {
         <>
             <Head>
                 <title>{titles[locale]}</title>
+                <link rel="stylesheet" href="https://use.typekit.net/qjp6osq.css" />
             </Head>
             <div>
                 {elements?.map((element, index) => (
