@@ -11,17 +11,19 @@ const Calendar = ({ props, locale }) => {
 
   calendarProps["data-type"] = "normal";
 
-  try {
-    const html = new DOMParser().parseFromString(embedCode, 'text/html');
-    const embedEl = html.getElementsByClassName("event-calendar-embed")[0];
-    const attrs = embedEl.attributes
-    for (let i=0; i < attrs.length; i++) {
-      const attr = attrs.item(i)
-      if (attr.name.startsWith("data-")) {
-        calendarProps[attr.name] = attr.value
+  if (embedCode) {
+    try {
+      const html = new DOMParser().parseFromString(embedCode, 'text/html');
+      const embedEl = html.getElementsByClassName("event-calendar-embed")[0];
+      const attrs = embedEl.attributes
+      for (let i=0; i < attrs.length; i++) {
+        const attr = attrs.item(i)
+        if (attr.name.startsWith("data-")) {
+          calendarProps[attr.name] = attr.value
+        }
       }
-    }
-  }  catch (error) { }
+    }  catch (error) { }  
+  }
 
   return (
     <>

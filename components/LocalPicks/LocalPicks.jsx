@@ -8,7 +8,6 @@ import dayjs from "dayjs";
 import { color } from "@mui/system";
 
 const LocalPicks = ({ props, locale }) => {
-  console.log("props: ", props)
   const [turku, setTurku] = useState(null)
   const [isLoading, setLoading] = useState(false)
 
@@ -18,7 +17,6 @@ const LocalPicks = ({ props, locale }) => {
       .then((res) => res.json())
       .then((turku) => {
         setTurku(turku)
-        console.log('hae yksi', turku)
         setLoading(false)
       })
     props.column.map(item => {
@@ -29,12 +27,11 @@ const LocalPicks = ({ props, locale }) => {
             .then(
               (result) => {
                 setTurku(result)
-                console.log('hae kaikki', result)
               })
         })
       }
     })
-  }, [])
+  }, [props.column])
 
   if (isLoading) return <Box sx={{ display: "flex", justifyContent: "center" }}><CircularProgress /></Box>
   if (!turku) return <p>No data</p>

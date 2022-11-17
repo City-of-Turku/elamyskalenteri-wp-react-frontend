@@ -34,7 +34,11 @@ const Navbar = ({ locale }) => {
   const drawer = (
     <Box onClick={toggleMenu} sx={{ textAlign: 'center' }}>
       <Box sx={{ my: 4, cursor: "pointer" }}>
-        <Link href={"/"}><Image src={vinkLogoOrange} alt="Vink logo" height={50} width={150} /></Link>
+        <Link href={"/"}>
+          <a>
+            <Image src={vinkLogoOrange} alt="Vink logo" height={50} width={150} />
+          </a>
+        </Link>
       </Box>
       <Divider />
       <List>
@@ -67,7 +71,9 @@ const Navbar = ({ locale }) => {
               </IconButton>
               <Box sx={{ cursor: "pointer" }}>
                 <Link href={`/${locale}/`}>
-                  <Image src={vinkLogoWhite} alt="Vink logo" height={100} width={195} />
+                  <a>
+                    <Image src={vinkLogoWhite} alt="Vink logo" height={100} width={195} />
+                  </a>
                 </Link>
               </Box>
               <Typography sx={{ fontSize: 44, color: '#193773', fontFamily: 'halogen', fontWeight: 900, letterSpacing: 1, display: { xs: 'none', sm: 'none', md: 'flex', lg: 'flex', xl: 'flex' } }}>
