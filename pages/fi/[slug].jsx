@@ -30,10 +30,12 @@ export const getStaticPaths = async() => {
 export const getStaticProps = async ({ params }) => {
   const res = await fetch(process.env.NEXT_PUBLIC_WP_URL + `/wp-json/wp/v2/posts?slug=${params.slug}&acf_format=standard`).then(r => r.json())
   const elements = res[0]?.acf?.elements
+
   return {
     props: {
-      elements: elements
-    }
+      elements: elements ? elements : []
+    },
+    revalidate: 60,
   }
 }
 
