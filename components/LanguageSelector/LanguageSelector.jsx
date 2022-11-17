@@ -27,10 +27,10 @@ const LanguageSelector = () => {
 const LangLink = ({ href, language }) => {
     const theme = useTheme();
 
-    const [lang, setLang] = useState()
-    const handleChange = (event) => {
-        setLang(event.target.value)
-    }
+    // const [lang, setLang] = useState()
+    // const handleChange = (event) => {
+    //     setLang(event.target.value)
+    // }
 
     return (
         <>
@@ -52,7 +52,7 @@ const LangLink = ({ href, language }) => {
                             backgroundColor: "#fff",
                         },
                     }} className={styles.languageBtnText}>
-                        {language}
+                        <a> {language} </a>
                     </Button>
                 </Link>
             </div>
@@ -67,9 +67,3 @@ LangLink.propTypes = {
     href: PropTypes.string,
     language: PropTypes.string,
 }
-
-LangLink.propTypes = {
-    href: PropTypes.string,
-    language: PropTypes.string,
-}
-
