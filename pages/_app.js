@@ -1,5 +1,6 @@
 import '../styles/globals.css'
-import React from "react"
+import React, { useEffect } from "react"
+import { useRouter } from 'next/router';
 import { ThemeProvider } from "@mui/material/styles";
 import {
   whiteLabelTheme,
@@ -12,9 +13,32 @@ import {
 } from "../styles/themes";
 
 function MyApp({ Component, pageProps }) {
-  return <ThemeProvider theme={vinkTheme}>
-    <Component {...pageProps} />
-  </ThemeProvider>
+
+  const { pathname } = useRouter();
+
+  let locale
+  languages.map(l => {
+    if (pathname.includes(l)) {
+      locale = l
+    }
+  })
+
+  useEffect(() => {
+    document.documentElement.lang = locale
+  }, [locale])
+
+
+  const getLayout = Component.getLayout || ((page) => page)
+  return (
+
+    <ThemeProvider theme={vinkTheme}>
+      {getLayout(<Component {...pageProps} />)}
+    </ThemeProvider>
+
+  )
 }
+
+
+const languages = ["fi", "sv", "en"]
 
 export default MyApp

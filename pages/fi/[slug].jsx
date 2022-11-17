@@ -1,16 +1,16 @@
 import Layout from "../../components/Layout/Layout"
-import IndexPage from "../../pageComponents/Index"
+import Content from "../../pageComponents/Content"
 
 const ContentPost = ({ elements }) => {
-    return (
-        <Layout locale={"fi"}>
-            <IndexPage locale={"fi"} elements={elements} />
-        </Layout>
+  return (
+    <Layout locale={"fi"}>
+      <Content locale={"fi"} elements={elements} />
+    </Layout>
 
-    )
+  )
 }
 
-export const getStaticPaths = async() => {
+export const getStaticPaths = async () => {
 
   // Fetch all pages
   const pagesAvailable = await fetch(`${process.env.NEXT_PUBLIC_WP_URL}/wp-json/wp/v2/posts?_fields=slug`)

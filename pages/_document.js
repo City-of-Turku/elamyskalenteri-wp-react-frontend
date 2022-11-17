@@ -20,6 +20,7 @@ class MyDocument extends Document {
             <Html lang={this.props.locale}>
                 <Head />
                 <link rel="shortcut icon" href="/favicon/favicon.ico" />
+                <link rel="stylesheet" href="https://use.typekit.net/qjp6osq.css" />
                 <body>
                     <Main />
                     <NextScript />
@@ -29,6 +30,6 @@ class MyDocument extends Document {
     }
 }
 
-const languages = ["fi", "en", "sv"]
+const languages = ["fi", "sv", "en"]
 
 export default MyDocument

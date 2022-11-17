@@ -1,8 +1,8 @@
-import { useRouter } from "next/router";
+import styles from "./Navbar.module.css";
 import PropTypes from "prop-types"
 import Link from "next/link";
-import styles from "./Navbar.module.css";
 import { resolveActive } from "../../functions/pathResolver"
+import { useRouter } from "next/router";
 
 const NavLink = ({ href, title, handleClick }) => {
     const router = useRouter()

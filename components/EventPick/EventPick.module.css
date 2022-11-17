@@ -13,6 +13,7 @@
 }
 
 .textBackground {
+    width: 100%;
     position: absolute;
     bottom: 1rem;
     padding: 2rem;

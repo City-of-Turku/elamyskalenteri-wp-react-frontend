@@ -54,6 +54,7 @@ const Navbar = ({ locale }) => {
               <div className={styles.linkContainer}>
                 <LanguageSelector />
               </div>
+              {/* mobile */}
               <LangSelect />
             </Box>
             <Box sx={{ justifyContent: { xs: 'center' }, display: { xs: 'flex', sm: 'flex' }, alignItems: 'center' }}>
