@@ -14,20 +14,3 @@ a {
 * {
   box-sizing: border-box;
 }
-
-.localpicks {
-  display: flex;
-  flex-flow: row;
-  padding: 1rem 0;
-}
-
-.localpicks > div:nth-child(2) {
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  flex: auto;
-}
-
-.localpicks:last-child, .localpicks:nth-child(3) {
-  padding: 0 0 1rem 0;
-}
