@@ -11,6 +11,7 @@
     right: 0;
     top: 0;
     object-fit: none;
+    border-radius: 2px;
     /* background-size: cover; */
 }
 
