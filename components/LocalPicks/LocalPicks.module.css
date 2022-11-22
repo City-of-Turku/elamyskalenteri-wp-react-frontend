@@ -1,12 +1,10 @@
 .localPicksText {
-    max-width: 100%;
     padding-bottom: 1rem;
     align-items: center;
-    font-size: 35px;
+    font-size: 32px;
     font-weight: 900;
     word-wrap: break-word;
     text-align: center;
-    white-space: nowrap;
 }
 
 .allLocalPicks {

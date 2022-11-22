@@ -36,9 +36,7 @@ const LocalPicks = ({ props, locale }) => {
   return (
     <>
       <div style={{ justifyContent: "center", margin: "80px 0" }}>
-        <div>
-          <Typography className={styles.localPicksText} style={{ fontFamily: "halogen", color: "#193773" }}>{props.header[locale]}</Typography>
-        </div>
+        <Typography className={styles.localPicksText} style={{ fontFamily: "halogen", color: "#193773" }}>{props.header[locale]}</Typography>
         <div className={styles.allLocalPicks}>
           {props.column.map((col, index) => (
             <div key={index} style={{ textAlign: "center" }}>
