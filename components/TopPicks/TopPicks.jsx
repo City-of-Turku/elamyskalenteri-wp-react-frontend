@@ -1,5 +1,6 @@
 import Link from "next/link";
-import styles from '../../styles/Home.module.css'
+import styles from "./TopPicks.module.css";
+import Typography from '@mui/material/Typography';
 
 const TopPicks = ({ props, locale }) => {
 
@@ -21,13 +22,17 @@ const TopPicks = ({ props, locale }) => {
               flexDirection: "column",
               justifyContent: item.label_position
             }}>
-              <h2 style={{ fontFamily: "Forma DJR Micro", fontSize: 30, fontWeight: 500, letterSpacing: 2, backgroundColor: item.text_background_color, textAlign: item.label_position, color: item.text_color, padding: 10 }}>{item?.title?.[locale]}</h2>
-              <p style={{ fontFamily: "Forma DJR Micro", fontSize: 22, letterSpacing: 2, backgroundColor: item.text_background_color, textAlign: item.label_position, color: item.text_color, padding: 10 }}>{item?.desc?.[locale]}</p>
+              <div className={styles.textBackground} style={{ color: item.text_color }}>
+                {/* <h2 style={{ fontFamily: "Forma DJR Micro", fontSize: 30, fontWeight: 500, letterSpacing: 2 }}>{item?.title?.[locale]}</h2>
+                <p style={{ fontFamily: "Forma DJR Micro", fontSize: 22, letterSpacing: 2 }}>{item?.desc?.[locale]}</p> */}
+                <Typography variant="h5" style={{ fontSize: "1.5rem", paddingBottom: 10 }}>{item?.title?.[locale]}</Typography>
+                <Typography variant="subtitle2" style={{ fontSize: "1.2rem", fontWeight: 300 }}>{item?.desc?.[locale] ? item?.desc?.[locale] : ""}</Typography>
+              </div>
             </div>
           </Link>
         ))}
       </div>
-    </div>
+    </div >
   )
 }
 export default TopPicks

@@ -1,0 +1,20 @@
+.topPicksGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 28.5rem);
+    grid-template-rows: repeat(2, 19.25rem);
+    grid-gap: 1.5rem
+}
+
+.textBackground {
+
+    padding: 2rem;
+    letter-spacing: 0.2;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+}
+
+@media (max-width: 1024px) {
+    .topPicksGrid {
+        grid-template-columns: repeat(1, 28.5rem);
+        grid-template-rows: repeat(6, 19.25rem);
+    }
+}

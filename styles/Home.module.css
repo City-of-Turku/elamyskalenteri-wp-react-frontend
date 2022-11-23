@@ -12,17 +12,3 @@
   position: relative;
   padding: 0px 0px 15px 0px;
 }
-
-.topPicksGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 28.5rem);
-  grid-template-rows: repeat(2, 19.25rem);
-  grid-gap: 1.5rem
-}
-
-@media (max-width: 600px) {
-  .topPicksGrid {
-    grid-template-columns: repeat(1, 28.5rem);
-    grid-template-rows: repeat(6, 19.25rem);
-  }
-}
