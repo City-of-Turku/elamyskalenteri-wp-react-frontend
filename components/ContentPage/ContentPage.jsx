@@ -7,7 +7,7 @@ const ContentPage = ({ props, locale }) => {
     return (
         <div style={{ justifyContent: "center", margin: "80px 0", display: "flex" }}>
             <div>
-                <img className={styles.img} src={props.content_items.content_image} alt="kuvateksti" />
+                <img className={styles.img} src={props.content_items.content_image ? props.content_items.content_image : "https://images.unsplash.com/photo-1609923024340-9af3839df46f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"} alt="kuvateksti" />
                 <Box sx={{
                     margin: 2,
                     width: "90%",
