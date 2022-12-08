@@ -1,13 +1,14 @@
-import IndexPage from "../../pageComponents/Index";
+import Index from "../../pageComponents/Index";
 import Layout from "../../components/Layout/Layout";
 import Box from "@mui/material/Box";
-import Image from "next/image";
-import vinkLogo from "../../public/svg/vinkLogo1.svg";
 import Button from "@mui/material/Button";
 import { useTheme } from "@mui/material";
+import Image from "next/image";
+import vinkLogo from "../../public/svg/vinkLogo1.svg";
 import Link from "next/link";
 import styles from "../../styles/Home.module.css";
 import Typography from "@mui/material/Typography";
+
 
 const Home = ({ elements }) => {
 
@@ -18,8 +19,8 @@ const Home = ({ elements }) => {
   };
 
   return (
-    <Layout locale={"en"} >
-      <IndexPage locale={"en"} elements={elements} />
+    <Layout locale={"fi"}>
+      <Index locale={"fi"} elements={elements} />
 
       <Box style={{ backgroundColor: "#f2ca99", color: "#ffffff", padding: 12 }}>
         <div style={{ display: "flex", justifyContent: "center" }}>
@@ -32,19 +33,19 @@ const Home = ({ elements }) => {
                 sx={{ color: theme.palette.secondary.main, fontSize: 19 }}
                 onClick={() => handleButtonClick("/")}
               >
-                Events
+                Tapahtumat
               </Button>
               <Button
                 sx={{ color: theme.palette.secondary.main, fontSize: 19 }}
                 onClick={() => handleButtonClick("/hobbies")}
               >
-                Hobbies
+                Harrastukset
               </Button>
               <Button
                 sx={{ color: theme.palette.secondary.main, fontSize: 19 }}
                 onClick={() => handleButtonClick("/educations")}
               >
-                Education
+                Koulutukset
               </Button>
             </div>
             <div
@@ -72,7 +73,7 @@ const Home = ({ elements }) => {
                   }}
                   className={styles.languageBtn}
                 >
-                  <Typography sx={{ textTransform: 'uppercase !important', padding: '0px 12px 0px 12px' }} className={styles.languageBtnText}>Add event</Typography>
+                  <Typography sx={{ textTransform: 'uppercase !important', padding: '0px 12px 0px 12px' }} className={styles.languageBtnText}>Lisää tapahtuma</Typography>
                 </Button>
               </Link>
             </div>
@@ -83,23 +84,23 @@ const Home = ({ elements }) => {
         <div style={{ display: "flex", justifyContent: "center", margin: "24px 0" }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 456px)", gridTemplateRows: "repeat(1, 150px)", gap: 24 }}>
             <div>
-              <h2 style={{ fontSize: 18, fontFamily: "halogen", color: "#FFF", paddingTop: "16px", marginBottom: 0, borderRadius: 4, fontWeight: 700, letterSpacing: 1 }}>Regional collaboration</h2>
+              <h2 style={{ fontSize: 18, fontFamily: "halogen", color: "#FFF", paddingTop: "16px", marginBottom: 0, borderRadius: 4, fontWeight: 700, letterSpacing: 1 }}>Alueellista yhteistyötä</h2>
               <div style={{ display: "flex", fontWeight: 700 }}>
-                <p style={{ margin: "0 15px 0 0" }}>Turku</p>
-                <p style={{ margin: "0 15px 0 0" }}>Naantali</p>
-                <p style={{ margin: "0 15px 0 0" }}>Raisio</p>
-                <p style={{ margin: "0 0 0 0" }}>Kaarina</p>
+                <p className={"bold"} style={{ margin: "0 15px 0 0" }}>Turku</p>
+                <p className={"bold"} style={{ margin: "0 15px 0 0" }}>Naantali</p>
+                <p className={"bold"} style={{ margin: "0 15px 0 0" }}>Raisio</p>
+                <p className={"bold"} style={{ margin: "0 0 0 0" }}>Kaarina</p>
               </div>
             </div>
             <div>
-              <h2 style={{ fontSize: 18, fontFamily: "halogen", color: "#FFF", paddingTop: "16px", borderRadius: 4, fontWeight: 700, letterSpacing: 1 }}>Contact information</h2>
+              <h2 style={{ fontSize: 18, fontFamily: "halogen", color: "#FFF", paddingTop: "16px", borderRadius: 4, fontWeight: 700, letterSpacing: 1 }}>Yhteystiedot</h2>
               <div>
                 <p style={{ margin: "0 15px 0 0" }}>info@jossain.fi</p>
                 <p style={{ margin: "0 15px 0 0" }}>(02) 123 123 4</p>
               </div>
             </div>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <p>Vink-kalenteri is not responsible for the correctness of the information entered in the calendar</p>
+              <p>Vink-kalenteri ei vasta kalenteriin ilmoitettujen tietojen oikeellisuudesta</p>
             </div>
           </div>
         </div>
@@ -110,7 +111,7 @@ const Home = ({ elements }) => {
               <div id="footerlinks" style={{ display: "flex" }}>
                 <a href="#" style={{ margin: "0 15px 0 0" }}>Saavutettavuusseloste</a>
                 <a href="#" style={{ margin: "0 15px 0 0" }}>Tietosuoja ja rekisteriselosteet</a>
-                <a href="#" style={{ margin: "0 15px 0 0" }}>Cookiepolicy</a>
+                <a href="#" style={{ margin: "0 15px 0 0" }}>Evästeasetukset</a>
               </div>
             </div>
           </div>
@@ -121,6 +122,7 @@ const Home = ({ elements }) => {
 }
 
 export const getStaticProps = async () => {
+
   const res = await fetch(process.env.NEXT_PUBLIC_WP_URL + "/wp-json/wp/v2/pages?slug=frontpage&acf_format=standard").then(r => r.json())
   const elements = res[0]?.acf?.elements
   return {

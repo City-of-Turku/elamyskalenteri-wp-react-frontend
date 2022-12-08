@@ -3,14 +3,10 @@ import Link from "next/link"
 import styles from "./LanguageSelector.module.css"
 import PropTypes from "prop-types"
 import { useRouter } from "next/router";
-import { resolvePath } from "../../functions/pathResolver";
+import { resolvePath, resolveActive } from "../../functions/pathResolver";
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { useTheme } from "@mui/material";
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
-import FormControl from '@mui/material/FormControl';
-import LangSelect from '../Navbar/langSelect';
 
 const LanguageSelector = () => {
     const { asPath } = useRouter();
@@ -18,8 +14,8 @@ const LanguageSelector = () => {
     return (
         <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, alignItems: "center" }}>
             <LangLink href={`/fi/${resolvePath(asPath.slice(4), "fi")}`} language="fi" />
-            <LangLink href={`/sv/${resolvePath(asPath.slice(4), "sv")}`} language="sv" />
-            <LangLink href={`/en/${resolvePath(asPath.slice(4), "en")}`} language="en" />
+            <LangLink href={`/sv/startsida/${resolvePath(asPath.slice(4), "sv")}`} language="sv" />
+            <LangLink href={`/en/frontpage/${resolvePath(asPath.slice(4), "en")}`} language="en" />
         </Box>
     )
 }
@@ -52,7 +48,10 @@ const LangLink = ({ href, language }) => {
                             backgroundColor: "#fff",
                         },
                     }} className={styles.languageBtnText}>
-                        <a> {language} </a>
+                        <a className={
+                            resolveActive(href) ? `${styles.link} ${styles.activeLink}`
+                                : styles.link
+                        }> {language} </a>
                     </Button>
                 </Link>
             </div>

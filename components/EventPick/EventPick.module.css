@@ -11,8 +11,10 @@
     right: 0;
     top: 0;
     object-fit: none;
+    /* object-position: center; */
     border-radius: 2px;
-    /* background-size: cover; */
+    background-position: "center",
+        /* background-size: cover; */
 }
 
 .textBackground {

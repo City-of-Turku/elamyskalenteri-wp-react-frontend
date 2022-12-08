@@ -5,4 +5,5 @@
     object-fit: none;
     border-radius: 2px;
     position: relative;
+    /* background-size: cover; */
 }

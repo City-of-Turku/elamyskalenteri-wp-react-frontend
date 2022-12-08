@@ -36,6 +36,7 @@ export const resolveActive = (path, navHref) => {
 
 // Add any relevant paths here
 const paths = [
+  { fi: "etusivu/", en: "frontpage/", sv: "startsida/" },
   { fi: "tapahtumat/", en: "events/", sv: "evenemang/" },
   { fi: "harrastukset/", en: "hobbies/", sv: "hobbyer/" },
   { fi: "koulutukset/", en: "educations/", sv: "träning/" },

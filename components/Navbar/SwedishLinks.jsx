@@ -5,7 +5,7 @@ const SwedishLinks = ({ handleClick }) => {
     return (
         <>
             <NavLink
-                href={"/sv/"}
+                href={"/sv/startsida"}
                 title={"Startsida"}
                 handleClick={handleClick}
             />

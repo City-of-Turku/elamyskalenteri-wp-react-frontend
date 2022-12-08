@@ -18,7 +18,7 @@
     background-color: #fff;
 }
 
-/* .link:after {
+.link:after {
     position: absolute;
     content: '';
     display: block;
@@ -34,7 +34,7 @@
 
 .activeLink:after {
     color: black
-} */
+}
 
 .linkContainer {
     display: flex;

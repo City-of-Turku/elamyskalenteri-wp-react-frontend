@@ -71,7 +71,7 @@ const Navbar = ({ locale }) => {
                 <MenuIcon />
               </IconButton>
               <Box sx={{ cursor: "pointer" }}>
-                <Link href={`/${locale}/`}>
+                <Link href={`/fi/etusivu`}>
                   <a>
                     <Image src={vinkLogoWhite} alt="Vink logo" height={100} width={195} />
                   </a>

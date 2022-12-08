@@ -1,4 +1,4 @@
-import IndexPage from "../pageComponents/Index";
+import Index from "../pageComponents/Index";
 import Layout from "../components/Layout/Layout";
 import Box from "@mui/material/Box";
 import Image from "next/image";
@@ -10,18 +10,14 @@ import Typography from "@mui/material/Typography";
 import { useTheme } from "@mui/material";
 
 const Home = ({ elements }) => {
-
-
   const theme = useTheme();
-
   const handleButtonClick = (pageURL) => {
     history.push(pageURL);
   };
 
   return (
     <Layout>
-      <IndexPage locale={"fi"} elements={elements} />
-
+      <Index locale={"fi"} elements={elements} />
       <Box style={{ backgroundColor: "#f2ca99", color: "#ffffff", padding: 12 }}>
         <div style={{ display: "flex", justifyContent: "center" }}>
           <div style={{ display: "grid", width: "1416px", gridTemplateColumns: "1fr 3fr 1fr", gap: 24 }}>

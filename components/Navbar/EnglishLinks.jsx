@@ -5,7 +5,7 @@ const EnglishLinks = ({ handleClick }) => {
     return (
         <>
             <NavLink
-                href={"/en/"}
+                href={"/en/frontpage"}
                 title={"Frontpage"}
                 handleClick={handleClick}
             />

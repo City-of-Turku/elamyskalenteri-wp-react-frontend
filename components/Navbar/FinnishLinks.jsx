@@ -1,11 +1,11 @@
-import PropTypes from "prop-types"
 import NavLink from "./NavLink"
+import PropTypes from "prop-types"
 
 const FinnishLinks = ({ handleClick }) => {
     return (
         <>
             <NavLink
-                href={"/fi/"}
+                href={"/fi/etusivu"}
                 title={"Etusivu"}
                 handleClick={handleClick}
             />
