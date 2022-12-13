@@ -12,7 +12,6 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Image from "next/image";
 import LangSelect from "./langSelect";
-import SearchBar from './SearchBar';
 import Link from 'next/link'
 import PropTypes from "prop-types"
 import LanguageSelector from "../LanguageSelector/LanguageSelector"
@@ -94,7 +93,6 @@ const Navbar = ({ locale }) => {
             </Box>
           </Box>
         </Toolbar>
-        <SearchBar />
       </AppBar>
       <Box component="nav">
         <Drawer

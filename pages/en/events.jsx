@@ -1,9 +1,11 @@
 import Layout from "../../components/Layout/Layout";
 import Events from "../../pageComponents/Events";
+import SearchBar from "../../components/Searchbar/SearchBar";
 
 const EventsPage = ({ elements }) => {
     return (
         <Layout locale={"en"}>
+            <SearchBar />
             <Events locale={"en"} elements={elements} />
         </Layout>
     )

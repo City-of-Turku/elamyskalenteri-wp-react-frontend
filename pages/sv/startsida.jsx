@@ -8,6 +8,7 @@ import { useTheme } from "@mui/material";
 import Link from "next/link";
 import styles from "../../styles/Home.module.css";
 import Typography from "@mui/material/Typography";
+import SearchBar from "../../components/Searchbar/SearchBar";
 
 const Home = ({ elements }) => {
 
@@ -18,7 +19,8 @@ const Home = ({ elements }) => {
   };
 
   return (
-    <Layout locale={"sv"} >
+    <Layout locale={"sv"}>
+      <SearchBar />
       <Index locale={"sv"} elements={elements} />
       <Box style={{ backgroundColor: "#f2ca99", color: "#ffffff", padding: 12 }}>
         <div style={{ display: "flex", justifyContent: "center" }}>

@@ -1,9 +1,11 @@
 import Layout from "../../components/Layout/Layout";
 import Educations from "../../pageComponents/Educations";
+import SearchBar from "../../components/Searchbar/SearchBar";
 
 const EducationsPage = ({ elements }) => {
     return (
         <Layout locale={"sv"}>
+            <SearchBar />
             <Educations locale={"sv"} elements={elements} />
         </Layout>
     )

@@ -3,6 +3,12 @@
     height: 70px;
 }
 
+
+.header {
+    height: 306px;
+    width: 100%;
+}
+
 .link {
     display: block;
     margin: 0 25px;

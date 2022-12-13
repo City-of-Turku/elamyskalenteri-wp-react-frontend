@@ -52,7 +52,7 @@ const SearchBar = () => {
     }
 
     return (
-        <div style={{ position: "relative", top: 35, display: "flex", justifyContent: "center" }}>
+        <div style={{ position: "relative", top: -35, display: "flex", justifyContent: "center" }}>
             <Search onClick={handleClick}>
                 <SearchIconWrapper>
                     <SearchIcon />

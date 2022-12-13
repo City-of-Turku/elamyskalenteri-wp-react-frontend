@@ -1,9 +1,11 @@
 import Layout from "../../components/Layout/Layout";
 import Hobbies from "../../pageComponents/Hobbies";
+import SearchBar from "../../components/Searchbar/SearchBar";
 
 const HobbiesPage = ({ elements }) => {
     return (
         <Layout locale={"fi"}>
+            <SearchBar />
             <Hobbies locale={"fi"} elements={elements} />
         </Layout>
     )

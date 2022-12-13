@@ -13,8 +13,8 @@ const LanguageSelector = () => {
     return (
         <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, alignItems: "center" }}>
             <LangLink href={`/fi/${resolvePath(asPath.slice(4), "fi")}`} language="fi" />
-            <LangLink href={`/sv/startsida/${resolvePath(asPath.slice(4), "sv")}`} language="sv" />
-            <LangLink href={`/en/frontpage/${resolvePath(asPath.slice(4), "en")}`} language="en" />
+            <LangLink href={`/sv/startsida${resolvePath(asPath.slice(4), "sv")}`} language="sv" />
+            <LangLink href={`/en/frontpage${resolvePath(asPath.slice(4), "en")}`} language="en" />
         </Box>
     )
 }
