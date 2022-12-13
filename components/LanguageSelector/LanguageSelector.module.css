@@ -5,12 +5,10 @@
     font-weight: 900;
     font-size: 14px;
     text-transform: capitalize;
+    background-color: #F29544;
+    color: #193773;
 }
 
-.languageBtnText:after {
-    background-color: "#fff"
+.activeLink {
+    background-color: #fff;
 }
-
-
-
-.link:hover:after {}

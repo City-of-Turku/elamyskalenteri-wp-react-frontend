@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Link from "next/link"
 import styles from "./LanguageSelector.module.css"
 import PropTypes from "prop-types"
@@ -10,7 +10,6 @@ import { useTheme } from "@mui/material";
 
 const LanguageSelector = () => {
     const { asPath } = useRouter();
-
     return (
         <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, alignItems: "center" }}>
             <LangLink href={`/fi/${resolvePath(asPath.slice(4), "fi")}`} language="fi" />
@@ -22,12 +21,8 @@ const LanguageSelector = () => {
 
 const LangLink = ({ href, language }) => {
     const theme = useTheme();
-
-    // const [lang, setLang] = useState()
-    // const handleChange = (event) => {
-    //     setLang(event.target.value)
-    // }
-
+    const router = useRouter()
+    const currentLang = router.asPath
     return (
         <>
             <div
@@ -41,17 +36,11 @@ const LangLink = ({ href, language }) => {
                 <Link href={href} >
                     <Button sx={{
                         borderRadius: 0,
-                        backgroundColor: theme.palette.primary.main,
-                        color: theme.palette.primary.dark,
                         "&:hover": {
-                            color: "fff",
                             backgroundColor: "#fff",
                         },
-                    }} className={styles.languageBtnText}>
-                        <a className={
-                            resolveActive(href) ? `${styles.link} ${styles.activeLink}`
-                                : styles.link
-                        }> {language} </a>
+                    }} className={resolveActive(currentLang, href) ? `${styles.languageBtnText} ${styles.activeLink}` : styles.languageBtnText}>
+                        {language}
                     </Button>
                 </Link>
             </div>

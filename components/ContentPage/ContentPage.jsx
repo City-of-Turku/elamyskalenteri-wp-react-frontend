@@ -15,9 +15,11 @@ const ContentPage = ({ props, locale }) => {
                     pt: 3
                 }}>
                     <Typography variant="h4" sx={{ pb: 3, fontSize: 35, lineHeight: "46px" }}>{props.content_items.title?.[locale]}</Typography>
-                    <Typography variant="body2" sx={{ fontWeight: 400, fontSize: 18, lineHeight: "28.8px", letterSpacing: "1%", pb: 4 }}>{props.content_items.intro?.[locale]}</Typography>
-                    <Divider sx={{ width: "143px", height: "1px" }} />
-                    <Typography variant="body2" sx={{ fontWeight: 400, lineHeight: "26px", fontSize: 16, pt: 4, letterSpacing: "1.5%" }}>{props.content_items.body_text?.[locale]}</Typography>
+                    <Box sx={{ pl: 1 }}>
+                        <Typography variant="body2" sx={{ fontWeight: 400, fontSize: 18, lineHeight: "28.8px", letterSpacing: "1%", pb: 4 }}>{props.content_items.intro?.[locale]}</Typography>
+                        <Divider sx={{ width: "143px", height: "1px" }} />
+                        <Typography variant="body2" sx={{ fontWeight: 400, lineHeight: "26px", fontSize: 16, pt: 4, letterSpacing: "1.5%" }}>{props.content_items.body_text?.[locale]}</Typography>
+                    </Box>
                 </Box>
             </div>
         </div>
