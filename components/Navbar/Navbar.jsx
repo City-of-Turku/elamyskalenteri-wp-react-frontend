@@ -11,7 +11,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Image from "next/image";
-import LangSelect from "./langSelect";
+import LanguageSelectorMobile from "../LanguageSelector/LanguageSelectorMobile";
 import Link from 'next/link'
 import PropTypes from "prop-types"
 import LanguageSelector from "../LanguageSelector/LanguageSelector"
@@ -19,12 +19,10 @@ import styles from "./Navbar.module.css"
 import FinnishLinks from "./FinnishLinks";
 import SwedishLinks from "./SwedishLinks";
 import EnglishLinks from "./EnglishLinks";
-import ResponsiveAppBar from "./AppBar";
 
 const drawerWidth = 240;
 
 const Navbar = ({ locale }) => {
-
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const toggleMenu = () => {
@@ -59,7 +57,7 @@ const Navbar = ({ locale }) => {
               <div className={styles.linkContainer}>
                 <LanguageSelector />
               </div>
-              <LangSelect sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+              <LanguageSelectorMobile sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
             </Box>
             <Box sx={{ justifyContent: { xs: 'center' }, display: { xs: 'flex', sm: 'flex' }, alignItems: 'center' }}>
               <IconButton
