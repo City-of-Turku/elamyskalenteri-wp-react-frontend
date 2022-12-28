@@ -26,19 +26,31 @@ const EventsPage = ({ elements }) => {
                         </a>
                         <div className={styles.footer} style={{ display: "flex", justifyContent: "space-evenly" }}>
                             <Button
-                                sx={{ color: theme.palette.secondary.main, fontSize: 19 }}
+                                sx={{
+                                    color: theme.palette.secondary.main, fontSize: 19, "&:hover": {
+                                        textDecorationLine: 'underline'
+                                    },
+                                }}
                                 onClick={() => router.push("/fi/tapahtumat")}
                             >
                                 Tapahtumat
                             </Button>
                             <Button
-                                sx={{ color: theme.palette.secondary.main, fontSize: 19 }}
+                                sx={{
+                                    color: theme.palette.secondary.main, fontSize: 19, "&:hover": {
+                                        textDecorationLine: 'underline'
+                                    },
+                                }}
                                 onClick={() => router.push("/fi/harrastukset")}
                             >
                                 Harrastukset
                             </Button>
                             <Button
-                                sx={{ color: theme.palette.secondary.main, fontSize: 19 }}
+                                sx={{
+                                    color: theme.palette.secondary.main, fontSize: 19, "&:hover": {
+                                        textDecorationLine: 'underline'
+                                    },
+                                }}
                                 onClick={() => router.push("/fi/koulutukset")}
                             >
                                 Koulutukset
@@ -64,6 +76,7 @@ const EventsPage = ({ elements }) => {
                                         backgroundColor: "primary.dark",
                                         color: "#fff",
                                         "&:hover": {
+                                            clipPath: "polygon(9px 0, 100% 0, calc(100% - 9px) 100%, 0 100%)",
                                             color: theme.palette.primary.dark,
                                             backgroundColor: "#fff",
                                         },

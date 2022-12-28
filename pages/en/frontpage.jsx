@@ -18,28 +18,40 @@ const Home = ({ elements }) => {
     <Layout locale={"en"}>
       <SearchBar />
       <Index locale={"en"} elements={elements} />
-      <Box style={{ backgroundColor: "#f2ca99", color: "#ffffff", padding: 12 }}>
+      <Box className={styles.bottomNav} style={{ backgroundColor: "#f2ca99", color: "#ffffff", padding: 12, display: { xs: "none" } }}>
         <div style={{ display: "flex", justifyContent: "center" }}>
           <div style={{ display: "grid", width: "1416px", gridTemplateColumns: "1fr 3fr 1fr", gap: 24 }}>
             <a href={"/"}>
-              <Image src={vinkLogo} alt="Vink logo" height={100} width={195} />
+              <Image className={styles.logo} src={vinkLogo} alt="Vink logo" height={100} width={195} />
             </a>
-            <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+            <div className={styles.footer} style={{ display: "flex", justifyContent: "space-evenly" }}>
               <Button
-                sx={{ color: theme.palette.secondary.main, fontSize: 19 }}
+                sx={{
+                  color: theme.palette.secondary.main, fontSize: 19, "&:hover": {
+                    textDecorationLine: 'underline'
+                  },
+                }}
                 onClick={() => router.push("/en/events")}
               >
                 Events
               </Button>
               <Button
-                sx={{ color: theme.palette.secondary.main, fontSize: 19 }}
+                sx={{
+                  color: theme.palette.secondary.main, fontSize: 19, "&:hover": {
+                    textDecorationLine: 'underline'
+                  },
+                }}
                 onClick={() => router.push("/en/hobbies")}
               >
                 Hobbies
               </Button>
               <Button
-                sx={{ color: theme.palette.secondary.main, fontSize: 19 }}
-                onClick={() => handleButtonClick("/en/educations")}
+                sx={{
+                  color: theme.palette.secondary.main, fontSize: 19, "&:hover": {
+                    textDecorationLine: 'underline'
+                  },
+                }}
+                onClick={() => router.push("/en/educations")}
               >
                 Educations
               </Button>
@@ -63,6 +75,7 @@ const Home = ({ elements }) => {
                     backgroundColor: "primary.dark",
                     color: "#fff",
                     "&:hover": {
+                      clipPath: "polygon(9px 0, 100% 0, calc(100% - 9px) 100%, 0 100%)",
                       color: theme.palette.primary.dark,
                       backgroundColor: "#fff",
                     },
@@ -76,9 +89,9 @@ const Home = ({ elements }) => {
           </div>
         </div>
       </Box>
-      <Box style={{ height: 334, backgroundColor: "#193773", color: "#ffffff", padding: 24 }}>
+      <Box style={{ height: "auto", backgroundColor: "#193773", color: "#ffffff", padding: 24 }}>
         <div style={{ display: "flex", justifyContent: "center", margin: "24px 0" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 456px)", gridTemplateRows: "repeat(1, 150px)", gap: 24 }}>
+          <div className={styles.bottomInfo}>
             <div>
               <h2 style={{ fontSize: 18, fontFamily: "halogen", color: "#FFF", paddingTop: "16px", marginBottom: 0, borderRadius: 4, fontWeight: 700, letterSpacing: 1 }}>Regional collaboration</h2>
               <div style={{ display: "flex", fontWeight: 700 }}>
@@ -102,13 +115,13 @@ const Home = ({ elements }) => {
         </div>
 
         <div style={{ display: "flex", justifyContent: "center", margin: "24px 0" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 684px)", gridTemplateRows: "repeat(1, 50px)", gap: 48 }}>
+          <div className={styles.bottomExtraInfo}>
             <div>
-              <div id="footerlinks" style={{ display: "flex" }}>
-                <a href="#" style={{ margin: "0 15px 0 0" }}>Saavutettavuusseloste</a>
-                <a href="#" style={{ margin: "0 15px 0 0" }}>Tietosuoja ja rekisteriselosteet</a>
-                <a href="#" style={{ margin: "0 15px 0 0" }}>Cookiepolicy</a>
-              </div>
+              <ul className={styles.footerLinks}>
+                <li><a href="#" style={{ margin: "0 15px 0 0" }}>Accessibility statement</a></li>
+                <li><a href="#" style={{ margin: "0 15px 0 0" }}>Data protection and register statements</a></li>
+                <li><a href="#" style={{ margin: "0 15px 0 0" }}>Cookiepolicy</a></li>
+              </ul>
             </div>
           </div>
         </div>

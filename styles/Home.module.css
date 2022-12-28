@@ -33,6 +33,10 @@
   list-style: none;
 }
 
+.footerLinks li:hover {
+  text-decoration: underline;
+}
+
 @media (max-width: 1024px) {
   .bottomNav {
     display: none;
