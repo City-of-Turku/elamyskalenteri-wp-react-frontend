@@ -19,6 +19,7 @@ import styles from "./Navbar.module.css"
 import FinnishLinks from "./FinnishLinks";
 import SwedishLinks from "./SwedishLinks";
 import EnglishLinks from "./EnglishLinks";
+import ResponsiveAppBar from "./AppBar";
 
 const drawerWidth = 240;
 
@@ -50,22 +51,22 @@ const Navbar = ({ locale }) => {
 
   return (
     <Box sx={{ display: 'flex' }}>
+      {/* <ResponsiveAppBar /> */}
       <AppBar className={styles.header} component="nav" position="static" elevation={0}>
         <Toolbar>
-          <Box sx={{ flexGrow: 1, display: { xs: 'block', sm: 'block' } }}>
+          <Box sx={{ flexGrow: 1, }}>
             <Box sx={{ display: 'flex', justifyContent: 'flex-end', p: 2 }}>
               <div className={styles.linkContainer}>
                 <LanguageSelector />
               </div>
-              {/* mobile */}
-              <LangSelect />
+              <LangSelect sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
             </Box>
             <Box sx={{ justifyContent: { xs: 'center' }, display: { xs: 'flex', sm: 'flex' }, alignItems: 'center' }}>
               <IconButton
                 aria-label="open drawer"
                 edge="start"
                 onClick={toggleMenu}
-                sx={{ color: "#fff", display: { xs: 'flex', sm: 'none' } }}
+                sx={{ color: "#fff", display: { xs: 'flex', sm: 'flex', md: 'none', lg: "none", xl: "none" } }}
               >
                 <MenuIcon />
               </IconButton>
@@ -100,13 +101,13 @@ const Navbar = ({ locale }) => {
           open={mobileOpen}
           onClose={toggleMenu}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            keepMounted: true,
           }}
           sx={{ display: { xs: 'block', sm: 'none' }, '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth }, }}>
           {drawer}
         </Drawer>
       </Box>
-    </Box >
+    </Box>
   );
 }
 

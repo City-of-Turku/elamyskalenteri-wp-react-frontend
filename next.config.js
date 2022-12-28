@@ -17,7 +17,7 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: "/fi",
+        source: "/",
         destination: "/fi/etusivu",
         permanent: true,
       }

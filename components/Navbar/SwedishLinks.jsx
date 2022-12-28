@@ -20,8 +20,8 @@ const SwedishLinks = ({ handleClick }) => {
                 handleClick={handleClick}
             />
             <NavLink
-                href={"/sv/traning"}
-                title={"Träning"}
+                href={"/sv/utbildningar"}
+                title={"Utbildningar"}
                 handleClick={handleClick}
             />
         </>

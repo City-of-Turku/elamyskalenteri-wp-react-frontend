@@ -12,3 +12,60 @@
   position: relative;
   padding: 0px 0px 15px 0px;
 }
+
+.bottomInfo {
+  display: grid;
+  grid-template-columns: repeat(3, 28.5rem);
+  grid-template-rows: repeat(1, 9.375rem);
+}
+
+.bottomExtraInfo {
+  /* display: grid;
+  grid-template-columns: repeat(2, 42.75rem);
+  grid-template-rows: repeat(1, 3.125rem); */
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.footerLinks {
+  display: flex;
+  list-style: none;
+}
+
+@media (max-width: 1024px) {
+  .bottomNav {
+    display: none;
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .languageBtn {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .bottomInfo {
+    display: inline;
+  }
+
+  .bottomExtraInfo {
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  .footerLinks {
+    flex-direction: column;
+    justify-content: left !important;
+    text-align: center
+  }
+}

@@ -2,22 +2,18 @@ import Index from "../../pageComponents/Index";
 import Layout from "../../components/Layout/Layout";
 import Box from "@mui/material/Box";
 import Image from "next/image";
-import vinkLogo from "../../public/svg/vinkLogo1.svg";
+import vinkLogo from "../../public/svg/logo_orange.svg";
 import Button from "@mui/material/Button";
 import { useTheme } from "@mui/material";
 import Link from "next/link";
 import styles from "../../styles/Home.module.css";
 import Typography from "@mui/material/Typography";
 import SearchBar from "../../components/Searchbar/SearchBar";
+import { useRouter } from 'next/router'
 
 const Home = ({ elements }) => {
-
   const theme = useTheme();
-
-  const handleButtonClick = (pageURL) => {
-    history.push(pageURL);
-  };
-
+  const router = useRouter();
   return (
     <Layout locale={"en"}>
       <SearchBar />
@@ -31,21 +27,21 @@ const Home = ({ elements }) => {
             <div style={{ display: "flex", justifyContent: "space-evenly" }}>
               <Button
                 sx={{ color: theme.palette.secondary.main, fontSize: 19 }}
-                onClick={() => handleButtonClick("/")}
+                onClick={() => router.push("/en/events")}
               >
                 Events
               </Button>
               <Button
                 sx={{ color: theme.palette.secondary.main, fontSize: 19 }}
-                onClick={() => handleButtonClick("/hobbies")}
+                onClick={() => router.push("/en/hobbies")}
               >
                 Hobbies
               </Button>
               <Button
                 sx={{ color: theme.palette.secondary.main, fontSize: 19 }}
-                onClick={() => handleButtonClick("/educations")}
+                onClick={() => handleButtonClick("/en/educations")}
               >
-                Education
+                Educations
               </Button>
             </div>
             <div
