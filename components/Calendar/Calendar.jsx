@@ -13,7 +13,7 @@ const Calendar = ({ props, locale }) => {
 
   if (embedCode) {
     try {
-      const html = new DOMParser().parseFromString(embedCode, 'text/html');
+      const html = new DOMParser().parseFromString(`<div>${embedCode}</div>`, 'text/html');
       const embedEl = html.getElementsByClassName("event-calendar-embed")[0];
       const attrs = embedEl.attributes
       for (let i=0; i < attrs.length; i++) {
@@ -28,7 +28,7 @@ const Calendar = ({ props, locale }) => {
   return (
     <>
       <div style={{ display: "flex", justifyContent: "center", margin: "24px 0" }}>
-        <Script src={props.calendar} />
+        <Script src={ process.env.NEXT_PUBLIC_EVENTS_COMPONENT_MAIN_URL } />
         {
           React.createElement(
             "div",
@@ -39,11 +39,10 @@ const Calendar = ({ props, locale }) => {
           )
         }
       </div>
+      
     </>
   )
 }
-
-
 export default Calendar
 
 
