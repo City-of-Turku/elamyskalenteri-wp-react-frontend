@@ -3,9 +3,11 @@ import Script from 'next/script'
 import React from 'react';
 import { DOMParser } from '@xmldom/xmldom'
 
+
 const Calendar = ({ props, locale }) => {
+
   const theme = useTheme();
-  
+
   const embedCode = props.embed_code;
   const calendarProps = {}
 
@@ -16,13 +18,13 @@ const Calendar = ({ props, locale }) => {
       const html = new DOMParser().parseFromString(`<div>${embedCode}</div>`, 'text/html');
       const embedEl = html.getElementsByClassName("event-calendar-embed")[0];
       const attrs = embedEl.attributes
-      for (let i=0; i < attrs.length; i++) {
+      for (let i = 0; i < attrs.length; i++) {
         const attr = attrs.item(i)
         if (attr.name.startsWith("data-")) {
           calendarProps[attr.name] = attr.value
         }
       }
-    }  catch (error) { }  
+    } catch (error) { }
   }
 
   return (

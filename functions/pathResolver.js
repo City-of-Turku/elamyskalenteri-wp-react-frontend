@@ -39,5 +39,5 @@ const paths = [
   { fi: "etusivu/", en: "frontpage/", sv: "startsida/" },
   { fi: "tapahtumat/", en: "events/", sv: "evenemang/" },
   { fi: "harrastukset/", en: "hobbies/", sv: "hobbyer/" },
-  { fi: "koulutukset/", en: "educations/", sv: "träning/" },
+  { fi: "koulutukset/", en: "educations/", sv: "utbildningar/" },
 ]

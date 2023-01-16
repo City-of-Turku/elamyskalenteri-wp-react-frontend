@@ -4,47 +4,54 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { useTheme } from "@mui/material";
 import Image from "next/image";
-import vinkLogo from "../../public/svg/vinkLogo1.svg";
+import vinkLogo from "../../public/svg/logo_orange.svg";
 import Link from "next/link";
 import styles from "../../styles/Home.module.css";
 import Typography from "@mui/material/Typography";
 import SearchBar from "../../components/Searchbar/SearchBar";
+import { useRouter } from 'next/router'
 
 const Home = ({ elements }) => {
-
   const theme = useTheme();
-
-  const handleButtonClick = (pageURL) => {
-    history.push(pageURL);
-  };
-
+  const router = useRouter();
   return (
     <Layout locale={"fi"}>
       <SearchBar />
       <Index locale={"fi"} elements={elements} />
-
-      <Box style={{ backgroundColor: "#f2ca99", color: "#ffffff", padding: 12 }}>
+      <Box className={styles.bottomNav} style={{ backgroundColor: "#f2ca99", color: "#ffffff", padding: 12, display: { xs: "none" } }}>
         <div style={{ display: "flex", justifyContent: "center" }}>
           <div style={{ display: "grid", width: "1416px", gridTemplateColumns: "1fr 3fr 1fr", gap: 24 }}>
             <a href={"/"}>
-              <Image src={vinkLogo} alt="Vink logo" height={100} width={195} />
+              <Image className={styles.logo} src={vinkLogo} alt="Vink logo" height={100} width={195} />
             </a>
-            <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+            <div className={styles.footer} style={{ display: "flex", justifyContent: "space-evenly" }}>
               <Button
-                sx={{ color: theme.palette.secondary.main, fontSize: 19 }}
-                onClick={() => handleButtonClick("/")}
+                sx={{
+                  color: theme.palette.secondary.main, fontSize: 19, "&:hover": {
+                    textDecorationLine: 'underline'
+                  },
+                }}
+                onClick={() => router.push("/fi/tapahtumat")}
               >
                 Tapahtumat
               </Button>
               <Button
-                sx={{ color: theme.palette.secondary.main, fontSize: 19 }}
-                onClick={() => handleButtonClick("/hobbies")}
+                sx={{
+                  color: theme.palette.secondary.main, fontSize: 19, "&:hover": {
+                    textDecorationLine: 'underline'
+                  },
+                }}
+                onClick={() => router.push("/fi/harrastukset")}
               >
                 Harrastukset
               </Button>
               <Button
-                sx={{ color: theme.palette.secondary.main, fontSize: 19 }}
-                onClick={() => handleButtonClick("/educations")}
+                sx={{
+                  color: theme.palette.secondary.main, fontSize: 19, "&:hover": {
+                    textDecorationLine: 'underline'
+                  },
+                }}
+                onClick={() => router.push("/fi/koulutukset")}
               >
                 Koulutukset
               </Button>
@@ -63,27 +70,28 @@ const Home = ({ elements }) => {
             >
               <Link href={"#"}>
                 <Button
+                  className={styles.languageBtn}
                   sx={{
                     borderRadius: 0,
                     backgroundColor: "primary.dark",
                     color: "#fff",
                     "&:hover": {
+                      clipPath: "polygon(9px 0, 100% 0, calc(100% - 9px) 100%, 0 100%)",
                       color: theme.palette.primary.dark,
                       backgroundColor: "#fff",
                     },
                   }}
-                  className={styles.languageBtn}
                 >
-                  <Typography sx={{ textTransform: 'uppercase !important', padding: '0px 12px 0px 12px' }} className={styles.languageBtnText}>Lisää tapahtuma</Typography>
+                  <Typography sx={{ textTransform: 'uppercase !important', padding: '0px 12px 0px 12px' }}>Lisää tapahtuma</Typography>
                 </Button>
               </Link>
             </div>
           </div>
         </div>
       </Box>
-      <Box style={{ height: 334, backgroundColor: "#193773", color: "#ffffff", padding: 24 }}>
+      <Box style={{ height: "auto", backgroundColor: "#193773", color: "#ffffff", padding: 24 }}>
         <div style={{ display: "flex", justifyContent: "center", margin: "24px 0" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 456px)", gridTemplateRows: "repeat(1, 150px)", gap: 24 }}>
+          <div className={styles.bottomInfo}>
             <div>
               <h2 style={{ fontSize: 18, fontFamily: "halogen", color: "#FFF", paddingTop: "16px", marginBottom: 0, borderRadius: 4, fontWeight: 700, letterSpacing: 1 }}>Alueellista yhteistyötä</h2>
               <div style={{ display: "flex", fontWeight: 700 }}>
@@ -107,13 +115,13 @@ const Home = ({ elements }) => {
         </div>
 
         <div style={{ display: "flex", justifyContent: "center", margin: "24px 0" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 684px)", gridTemplateRows: "repeat(1, 50px)", gap: 48 }}>
+          <div className={styles.bottomExtraInfo}>
             <div>
-              <div id="footerlinks" style={{ display: "flex" }}>
-                <a href="#" style={{ margin: "0 15px 0 0" }}>Saavutettavuusseloste</a>
-                <a href="#" style={{ margin: "0 15px 0 0" }}>Tietosuoja ja rekisteriselosteet</a>
-                <a href="#" style={{ margin: "0 15px 0 0" }}>Evästeasetukset</a>
-              </div>
+              <ul className={styles.footerLinks}>
+                <li><a href="#" style={{ margin: "0 15px 0 0" }}>Saavutettavuusseloste</a></li>
+                <li><a href="#" style={{ margin: "0 15px 0 0" }}>Tietosuoja ja rekisteriselosteet</a></li>
+                <li><a href="#" style={{ margin: "0 15px 0 0" }}>Evästeasetukset</a></li>
+              </ul>
             </div>
           </div>
         </div>

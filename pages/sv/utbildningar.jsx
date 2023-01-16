@@ -1,5 +1,5 @@
 import Layout from "../../components/Layout/Layout";
-import Hobbies from "../../pageComponents/Hobbies";
+import Educations from "../../pageComponents/Educations";
 import SearchBar from "../../components/Searchbar/SearchBar";
 import Box from "@mui/material/Box";
 import Image from "next/image";
@@ -11,13 +11,13 @@ import styles from "../../styles/Home.module.css";
 import Typography from "@mui/material/Typography";
 import { useRouter } from 'next/router'
 
-const HobbiesPage = ({ elements }) => {
+const EducationsPage = ({ elements }) => {
     const theme = useTheme();
     const router = useRouter();
     return (
         <Layout locale={"sv"}>
             <SearchBar />
-            <Hobbies locale={"sv"} elements={elements} />
+            <Educations locale={"sv"} elements={elements} />
             <Box className={styles.bottomNav} style={{ backgroundColor: "#f2ca99", color: "#ffffff", padding: 12, display: { xs: "none" } }}>
                 <div style={{ display: "flex", justifyContent: "center" }}>
                     <div style={{ display: "grid", width: "1416px", gridTemplateColumns: "1fr 3fr 1fr", gap: 24 }}>
@@ -133,7 +133,7 @@ const HobbiesPage = ({ elements }) => {
 
 export const getStaticProps = async () => {
 
-    const res = await fetch(process.env.NEXT_PUBLIC_WP_URL + "/wp-json/wp/v2/pages?slug=hobbies-sv&acf_format=standard").then(r => r.json())
+    const res = await fetch(process.env.NEXT_PUBLIC_WP_URL + "/wp-json/wp/v2/pages?slug=educations-sv&acf_format=standard").then(r => r.json())
     const elements = res[0]?.acf?.elements
 
     return {
@@ -145,4 +145,4 @@ export const getStaticProps = async () => {
 
 }
 
-export default HobbiesPage
+export default EducationsPage

@@ -14,6 +14,8 @@ const EventPick = ({ props, locale }) => {
                         <Typography variant="subtitle2" style={{ fontSize: "1.2rem", fontWeight: 300 }}>{props.event_item.short_desc?.[locale]}</Typography>
                     </div>
                 </div>
+                {/* <iframe width="420" height="345" src={props.event_item?.video}>
+                </iframe> */}
             </Link>
         </div>
     )

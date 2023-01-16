@@ -1,11 +1,10 @@
 import { useRef } from 'react';
-import Box from '@mui/material/Box';
 import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
 import { styled } from "@mui/material/styles";
 
 
-const SearchBar = () => {
+const SearchBar = ({ props, calendarRef }) => {
 
     const Search = styled("div")(() => ({
         borderRadius: 50,
@@ -46,18 +45,28 @@ const SearchBar = () => {
         },
     }));
 
-    const calendarRef = useRef()
-    const handleClick = () => {
-        calendarRef.current?.scrollIntoView({ behavior: 'smooth' })
+    // const calendarRef = useRef()
+    const handleClick = (e) => {
+        // calendarRef.current?.scrollIntoView({ behavior: 'smooth' })
+        e.preventDefault();
+        calendarRef.current.scrollIntoView({ behavior: "smooth" })
     }
+
+    // const onScroll = (e) => {
+    //     e.preventDefault();
+    //     resultRef.current.scrollIntoView({ behavior: "smooth" })
+    //     console.log("ref", resultRef)
+    // }
 
     return (
         <div style={{ position: "relative", top: -35, display: "flex", justifyContent: "center" }}>
-            <Search onClick={handleClick}>
+            <Search>
                 <SearchIconWrapper>
                     <SearchIcon />
                 </SearchIconWrapper>
                 <StyledInputBase
+                    // onClick={handleClick}
+                    readOnly
                     placeholder="Aloita etsiminen tästä"
                     inputProps={{ "aria-label": "etsi" }}
                 />

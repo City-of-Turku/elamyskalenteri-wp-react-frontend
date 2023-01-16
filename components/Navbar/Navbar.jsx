@@ -11,7 +11,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Image from "next/image";
-import LangSelect from "./langSelect";
+import LanguageSelectorMobile from "../LanguageSelector/LanguageSelectorMobile";
 import Link from 'next/link'
 import PropTypes from "prop-types"
 import LanguageSelector from "../LanguageSelector/LanguageSelector"
@@ -23,7 +23,6 @@ import EnglishLinks from "./EnglishLinks";
 const drawerWidth = 240;
 
 const Navbar = ({ locale }) => {
-
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const toggleMenu = () => {
@@ -50,22 +49,22 @@ const Navbar = ({ locale }) => {
 
   return (
     <Box sx={{ display: 'flex' }}>
+      {/* <ResponsiveAppBar /> */}
       <AppBar className={styles.header} component="nav" position="static" elevation={0}>
         <Toolbar>
-          <Box sx={{ flexGrow: 1, display: { xs: 'block', sm: 'block' } }}>
+          <Box sx={{ flexGrow: 1, }}>
             <Box sx={{ display: 'flex', justifyContent: 'flex-end', p: 2 }}>
               <div className={styles.linkContainer}>
                 <LanguageSelector />
               </div>
-              {/* mobile */}
-              <LangSelect />
+              <LanguageSelectorMobile sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
             </Box>
             <Box sx={{ justifyContent: { xs: 'center' }, display: { xs: 'flex', sm: 'flex' }, alignItems: 'center' }}>
               <IconButton
                 aria-label="open drawer"
                 edge="start"
                 onClick={toggleMenu}
-                sx={{ color: "#fff", display: { xs: 'flex', sm: 'none' } }}
+                sx={{ color: "#fff", display: { xs: 'flex', sm: 'flex', md: 'none', lg: "none", xl: "none" } }}
               >
                 <MenuIcon />
               </IconButton>
@@ -100,13 +99,13 @@ const Navbar = ({ locale }) => {
           open={mobileOpen}
           onClose={toggleMenu}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            keepMounted: true,
           }}
           sx={{ display: { xs: 'block', sm: 'none' }, '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth }, }}>
           {drawer}
         </Drawer>
       </Box>
-    </Box >
+    </Box>
   );
 }
 
