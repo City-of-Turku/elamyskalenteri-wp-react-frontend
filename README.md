@@ -5,7 +5,7 @@ Make sure you have Node version >= 16
 - `npm run build && npm run start` runs production build
 
 ## Configuration
-Set the following variables in the .env file:
+For environment variables you can use the `.env` as a base for `.env.local` file and then set the following variables in the `.env.local` file:
 
 `NEXT_PUBLIC_WP_URL`
  - The URL of the WordPress installation
