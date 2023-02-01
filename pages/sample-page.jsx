@@ -12,7 +12,7 @@ const SamplePage = ({ elements }) => {
 
 export const getStaticProps = async () => {
     const res = await fetch(process.env.NEXT_PUBLIC_WP_URL + "/wp-json/wp/v2/pages?slug=sample-page&acf_format=standard").then(r => r.json())
-    const elements = res[0]?.acf?.elements
+    const elements = res[0]?.acf?.elements || null
     return {
         props: {
             elements: elements
