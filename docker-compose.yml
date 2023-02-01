@@ -1,0 +1,10 @@
+services:
+  elamyskalenteri-nextjs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    env_file:
+      - .env
+    ports:
+    - 3005:3000
